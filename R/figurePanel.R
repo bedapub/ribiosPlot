@@ -2,8 +2,8 @@
 #' @param gg A \code{grob} object
 #' @param title Character, title of the plot panel, e.g. \code{A}, \code{(B)}, etc.
 #' 
-#' @importFrom grid gpar textGrob
-#' @importFrom gridExtra arrangeGrob
+## @importFrom grid gpar textGrob
+## @importFrom gridExtra arrangeGrob
 #' @return A \code{grob} object
 #' 
 #' @examples 
@@ -40,10 +40,10 @@ figurePanel <- function(gg, title) {
   titleg <- grid::textGrob(title, x=unit(0, "npc"), y=unit(1, "npc"), 
                           just=c("left", "top"),
                           gp=grid::gpar(col="black", fontsize=18))
-  compactPlot <- gg + theme(
+  compactPlot <- gg + ggplot2::theme(
     plot.margin = unit(c(0,0,0,0), "cm"),
-    axis.title.x = element_text(margin=margin(0,0,0,0)), 
-    axis.title.y = element_text(margin=margin(0,0,0,0)))
+    axis.title.x = ggplot2::element_text(margin=ggplot2::margin(0,0,0,0)), 
+    axis.title.y = ggplot2::element_text(margin=ggplot2::margin(0,0,0,0)))
   res <- gridExtra::arrangeGrob(compactPlot,
                                 top=titleg,
                                 padding = unit(0.15, "line"))
