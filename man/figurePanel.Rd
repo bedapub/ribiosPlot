@@ -18,6 +18,7 @@ A \code{grob} object
 Make a figure panel with title
 }
 \examples{
+require("ggplot2")
 df <- data.frame(
   gp = factor(rep(letters[1:3], each = 10)),
   y = rnorm(30)
