@@ -14,7 +14,8 @@ importFrom(lattice, panel.xyplot, col.whitebg, lattice.options)
 importFrom(ribiosUtils, assertFile, basefilename, chosenFew, haltifnot, percentage)
 importFrom(methods, setClass, setGeneric, setMethod, is, new)
 importFrom(RColorBrewer, brewer.pal, brewer.pal.info)
-importFrom(grid, pushViewport, plotViewport, grid.layout, unit, gpar, viewport, grid.text)
+importFrom(grid, pushViewport, plotViewport, grid.layout, unit, gpar, viewport, grid.text, gpar, textGrob)
+importFrom(gridExtra, arrangeGrob)
 
 ## class
 exportClass(fcol)

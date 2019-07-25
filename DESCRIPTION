@@ -1,8 +1,8 @@
 Package: ribiosPlot
 Type: Package
 Title: Plotting module of ribios for visualization
-Version: 1.2-3
-Date: 2019-07-03
+Version: 1.2-4
+Date: 2019-07-25
 Author: Jitao David Zhang <jitao_david.zhang@roche.com>
 Maintainer: Jitao David Zhang <jitao_david.zhang@roche.com>
 Description: Data structures, pre-compiled color palettes, functions for data
@@ -14,6 +14,7 @@ Imports:
     RColorBrewer,
     methods,
     grid,
+    gridExtra,
     utils,
     graphics,
     stats
@@ -24,7 +25,8 @@ Suggests:
     MASS,
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    ggplot2
 Collate:
     AllClasses.R
     AllMethods.R
@@ -42,6 +44,7 @@ Collate:
     expVar.R
     pcaPlots.R
     plotVenn.R
+    figurePanel.R
 Enhances: Vennerable
 License: GPL-3
 LazyLoad: yes
