@@ -17,7 +17,8 @@ Imports:
     gridExtra,
     utils,
     graphics,
-    stats
+    stats,
+    ggplot2
 Suggests:
     latticeExtra,
     ribiosArg,
@@ -25,8 +26,7 @@ Suggests:
     MASS,
     testthat,
     knitr,
-    rmarkdown,
-    ggplot2
+    rmarkdown
 Collate:
     AllClasses.R
     AllMethods.R
