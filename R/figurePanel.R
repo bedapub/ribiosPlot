@@ -39,7 +39,7 @@
 figurePanel <- function(gg, title) {
   titleg <- grid::textGrob(title, x=unit(0, "npc"), y=unit(1, "npc"), 
                           just=c("left", "top"),
-                          gp=grid::gpar(col="black", fontsize=18))
+                          gp=grid::gpar(col="black", fontsize=18, fontface="bold"))
   compactPlot <- gg + ggplot2::theme(
     plot.margin = unit(c(0,0,0,0), "cm"),
     axis.title.x = ggplot2::element_text(margin=ggplot2::margin(0,0,0,0)), 
