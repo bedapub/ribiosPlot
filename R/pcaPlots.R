@@ -27,7 +27,7 @@ pcaScores <- function(x, choices, offset, reverse=c(FALSE, FALSE)) {
          domain = NA)
   if (is.complex(scores)) 
     stop("pcaScores is not defined for complex PCA")
-  if(missing(choices) || is.null(choices) || is.na(choices)) {
+  if(missing(choices) || is.null(choices) || (length(choices)==1 && is.na(choices))) {
     choices <- 1:ncol(scores)
   } else if (max(choices)>ncol(scores)) {
     stop("Input PCA has %d dimensions, the choices (%d, %d) are out of boundary",
@@ -382,7 +382,7 @@ pcaScoresFromLogFC <- function(lfcMat,
                                choices, reverse=c(FALSE, FALSE)) {
   lfcMatref <- cbind(reference, lfcMat)
   diffPca <- stats::prcomp(t(lfcMatref))
-  scores <- ribiosPlot::pcaScores(diffPca, offset=1, choices,
+  scores <- ribiosPlot::pcaScores(diffPca, offset=1, choices=choices,
                                   reverse=reverse)
   res <- scores[-1,,drop=FALSE]
   attr(res, "elfcMatpVar") <- attr(scores, "elfcMatpVar")

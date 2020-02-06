@@ -22,7 +22,7 @@ expVar <- function(x, choices) UseMethod("expVar")
 #'@describeIn expVar Extract explained variance from a prcomp object
 expVar.prcomp <- function(x, choices) {
   vars <- x$sdev^2
-  if(missing(choices) || is.null(choices) || is.na(choices))
+  if(missing(choices) || is.null(choices) || (length(choices)==1 && is.na(choices)))
     choices <- seq(along=vars)
   res <- vars[choices]/sum(vars)
   return(res)
@@ -31,7 +31,7 @@ expVar.prcomp <- function(x, choices) {
 #'@describeIn expVar Extract explained variance from a PCAScoreMatrix object
 expVar.PCAScoreMatrix <- function(x, choices) {
   ev <- attr(x, "expVar")
-  if(missing(choices) || is.null(choices) || is.na(choices))
+  if(missing(choices) || is.null(choices) || (length(choices)==1 && is.na(choices)))
     choices <- seq(along=ev)
   res <- ev[choices]
   return(res)
@@ -51,7 +51,7 @@ expVarLabel <- function(x, choices, compact) UseMethod("expVarLabel")
 #' @param choices An integer vector to indicate which PCs to be returned. If \code{NULL} or \code{NA} or missing, all elements are returned.
 #' @param compact Logical, either a \code{compact} label is returned, see examples.
 getExpVarLabel <- function(ev, choices, compact=FALSE) {
-  if(missing(choices) || is.null(choices) || is.na(choices))
+  if(missing(choices) || is.null(choices) || (length(choices)==1 && is.na(choices)))
     choices <- seq(along=ev)
   
   fmt <- ifelse(compact, "PC%d (%s)",  "Principal component %d (%s variance explained)")
