@@ -50,3 +50,4 @@ test_that("expVarLabel works well for PCAScoreMatrix", {
             ribiosUtils::percentage(myExpVar[c(1, 3)]))
   )
 })
+
