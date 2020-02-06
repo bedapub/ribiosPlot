@@ -4,11 +4,24 @@
 \alias{plotPCA.prcomp}
 \title{Visualise PCA results of expression data with the sample plot}
 \usage{
-\method{plotPCA}{prcomp}(x, choices = c(1, 2), text = FALSE,
-  points = list(pch = NULL, col = NULL, cex = NULL, bg = NULL, lwd =
-  NULL, lty = NULL, order = NULL), arrows = FALSE, grid = FALSE,
-  abline = FALSE, xlim = NULL, ylim = NULL, xlab = NULL,
-  ylab = NULL, offset, main = NULL, reverse = c(FALSE, FALSE), ...)
+\method{plotPCA}{prcomp}(
+  x,
+  choices = c(1, 2),
+  text = FALSE,
+  points = list(pch = NULL, col = NULL, cex = NULL, bg = NULL, lwd = NULL, lty = NULL,
+    order = NULL),
+  arrows = FALSE,
+  grid = FALSE,
+  abline = FALSE,
+  xlim = NULL,
+  ylim = NULL,
+  xlab = NULL,
+  ylab = NULL,
+  offset,
+  main = NULL,
+  reverse = c(FALSE, FALSE),
+  ...
+)
 }
 \arguments{
 \item{x}{\code{prcomp} object produced by the \code{prcomp} function}

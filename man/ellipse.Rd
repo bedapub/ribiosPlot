@@ -4,8 +4,18 @@
 \alias{ellipse}
 \title{Add an ellipse in an existing plot}
 \usage{
-ellipse(x0 = 0, y0 = 0, a = 1, b = 2, alpha = 0, length = 1000,
-  col = NULL, fill = NA, border, ...)
+ellipse(
+  x0 = 0,
+  y0 = 0,
+  a = 1,
+  b = 2,
+  alpha = 0,
+  length = 1000,
+  col = NULL,
+  fill = NA,
+  border,
+  ...
+)
 }
 \arguments{
 \item{x0}{x-coordinate of the ellipse center}

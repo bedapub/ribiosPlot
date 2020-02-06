@@ -4,8 +4,12 @@
 \alias{plotVenn}
 \title{Plot Venn object of the Vennerable package}
 \usage{
-plotVenn(venn, main = "", show = list(FaceText = "weight", Universe =
-  FALSE), ...)
+plotVenn(
+  venn,
+  main = "",
+  show = list(FaceText = "weight", Universe = FALSE),
+  ...
+)
 }
 \arguments{
 \item{venn}{Venn object from the Vennerable package}

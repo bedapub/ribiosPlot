@@ -4,8 +4,7 @@
 \alias{as.data.frame.PCAScoreMatrix}
 \title{Coerece a PCAScoreMatrix into data.frame}
 \usage{
-\method{as.data.frame}{PCAScoreMatrix}(x, row.names = NULL,
-  optional = FALSE, ...)
+\method{as.data.frame}{PCAScoreMatrix}(x, row.names = NULL, optional = FALSE, ...)
 }
 \arguments{
 \item{x}{A \code{PCAScoreMatrix} S3 object.}
