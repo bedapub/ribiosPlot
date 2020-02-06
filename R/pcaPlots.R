@@ -365,3 +365,30 @@ plotPCAscores <- function(scores, class, legendX, legendY, title="",...) {
   par(xpd=F)
 }
 
+#' Perform principal component analysis and derive PCA scores from a logFC matrix
+#' @param lfcMat Log fold-chnage matrix, genes (features) in rows and samples in columns
+#' @param reference The reference value that should be set as 0 in the scores, default: 0
+#' @param choices How many PCs should be retured. Passed to \code{pcaScores}
+#' @param reverse Whether the axes should be reversed. Passed to \code{pcaScores}
+#' 
+#' Perform PCA and get scores from a logFC matrix by setting 
+#' a pseudo profile of no change (0 for all features) at the origin point
+#' 
+#' @examples 
+#' lfcMat <- matrix(rnorm(9), nrow=3)
+#' pcaScoresFromLogFC(lfcMat)
+pcaScoresFromLogFC <- function(lfcMat,
+                               reference=0,
+                               choices, reverse=c(FALSE, FALSE)) {
+  lfcMatref <- cbind(reference, lfcMat)
+  diffPca <- stats::prcomp(t(lfcMatref))
+  scores <- ribiosPlot::pcaScores(diffPca, offset=1, choices,
+                                  reverse=reverse)
+  res <- scores[-1,,drop=FALSE]
+  attr(res, "elfcMatpVar") <- attr(scores, "elfcMatpVar")
+  rownames(res) <- rownames(scores)[-1]
+  colnames(res) <- colnames(scores)
+  class(res) <- "PCAScoreMatrilfcMat"
+  return(res)
+}
+
