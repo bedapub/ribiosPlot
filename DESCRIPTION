@@ -1,8 +1,8 @@
 Package: ribiosPlot
 Type: Package
 Title: Plotting module of ribios for visualization
-Version: 1.2-5
-Date: 2020-02-06
+Version: 1.2-6
+Date: 2020-02-24
 Author: Jitao David Zhang <jitao_david.zhang@roche.com>
 Maintainer: Jitao David Zhang <jitao_david.zhang@roche.com>
 Description: Data structures, pre-compiled color palettes, functions for data
@@ -45,6 +45,7 @@ Collate:
     pcaPlots.R
     plotVenn.R
     figurePanel.R
+    ggSmoothScatter.R
 Enhances: Vennerable
 License: GPL-3
 LazyLoad: yes
