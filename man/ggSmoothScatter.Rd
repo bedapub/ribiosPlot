@@ -27,7 +27,9 @@ ggSmoothScatter(
 \item{...}{Other parameters passed to stat_density_2d
 
 #' @note 
-So far the outliers are not plotted, to be done later}
+So far the outliers are not plotted, to be done later
+
+#' @importFrom ggplot2 ggplot stat_density_2d scale_fill_gradientn geom_vline geom_hline aes scale_x_continuous scale_y_continuous}
 }
 \description{
 Mimicking the graphics::smoothScatter behaviour for GGally::ggpairs

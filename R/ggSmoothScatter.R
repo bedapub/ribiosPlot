@@ -9,7 +9,7 @@
 #' #' @note 
 #' So far the outliers are not plotted, to be done later
 #' 
-#' @importFrom ggplot2 ggplot stat_density_2d scale_fill_gradientn geom_vline geom_hline aesvim NA
+#' #' @importFrom ggplot2 ggplot stat_density_2d scale_fill_gradientn geom_vline geom_hline aes scale_x_continuous scale_y_continuous
 #' @export
 ggSmoothScatter <- function(data, mapping, 
                             colours=colorRampPalette(c("white",blues9[5:9], 
@@ -36,7 +36,6 @@ ggSmoothScatter <- function(data, mapping,
 #' 
 #' Compared with \code{ggSmoothScatter}, 
 #' 
-#' @importFrom ggplot2 ggplot stat_density_2d scale_fill_gradientn geom_vline geom_hline aesvim NA
 #' @export
 ggSmoothScatterWithAux <-  function(data, mapping,  
                                     colours=colorRampPalette(c("white",blues9[5:9], 
