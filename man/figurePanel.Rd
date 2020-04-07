@@ -9,7 +9,8 @@ figurePanel(gg, title)
 \arguments{
 \item{gg}{A \code{grob} object}
 
-\item{title}{Character, title of the plot panel, e.g. \code{A}, \code{(B)}, etc.}
+\item{title}{Character, title of the plot panel, e.g. \code{A}, \code{(B)},
+etc.}
 }
 \value{
 A \code{grob} object
@@ -18,6 +19,7 @@ A \code{grob} object
 Make a figure panel with title
 }
 \examples{
+
 require("ggplot2")
 df <- data.frame(
   gp = factor(rep(letters[1:3], each = 10)),
@@ -47,4 +49,5 @@ panelB <- figurePanel(g2, "(B)")
 layoutMat <- matrix(c(1,2), nrow=1)
 gridExtra::grid.arrange(grobs=list(panelA, panelB),
  layout_matrix=layoutMat)
+
 }

@@ -9,19 +9,24 @@ PCAScoreMatrix(scoreMatrix, expVar)
 \arguments{
 \item{scoreMatrix}{Numeric matrix, objects in rows and PCs in columns}
 
-\item{expVar}{Numeric vector, length must equal the number of columns of \code{scoreMatrix}, explained variance by respective PCs}
+\item{expVar}{Numeric vector, length must equal the number of columns of
+\code{scoreMatrix}, explained variance by respective PCs}
 }
 \value{
-A S3-class \code{PCAScoreMatrix} object, which is a score matrix with explained variances (expVar) as attribute.
+A S3-class \code{PCAScoreMatrix} object, which is a score matrix
+with explained variances (expVar) as attribute.
 }
 \description{
 Construct a S3-class PCAScoreMatrix object
 }
 \examples{
+
 myPCmat <- PCAScoreMatrix(matrix(rnorm(15),ncol=3), c(0.25, 0.15, 0.1))
 myPCmat
+
 }
 \seealso{
-\code{as.matrix.PCAScoreMatrix}, \code{expVar.PCAScoreMatrix}, \code{print.PCAScoreMatrix}.
-This function is usually not called by the end user; instead, it is used by the function \code{\link{pcaScores}}
+\code{as.matrix.PCAScoreMatrix}, \code{expVar.PCAScoreMatrix},
+\code{print.PCAScoreMatrix}. This function is usually not called by the end
+user; instead, it is used by the function \code{\link{pcaScores}}
 }

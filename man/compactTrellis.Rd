@@ -8,6 +8,8 @@ compactTrellis()
 }
 \value{
 A list that can be used in \code{lattice.options}
+
+A list that can be used in \code{lattice.options}
 }
 \description{
 The function returns a set of lattice options that are useful for compact figures,
@@ -16,4 +18,15 @@ to prepare for publications.
 }
 \examples{
 opts <- compactTrellis()
+Return a compact setting for lattice plots, useful for preparing
+publications
+
+The function returns a set of lattice options that are useful for compact
+figures, with less room for padding and therefore more room for the figure.
+It is often used to prepare for publications.
+
+
+
+opts <- compactTrellis()
+
 }

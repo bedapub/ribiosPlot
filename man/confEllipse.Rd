@@ -23,6 +23,7 @@ Plot confidence ellipse based on two-dimenstional data
 }
 \examples{
 
+
 if(interactive()) {
   testX <- rnorm(100, mean=1, sd=2)
   testY <- rnorm(100, mean=2, sd=3)
@@ -39,5 +40,6 @@ if(interactive() & require("MASS")) {
   confEllipse(testMVR, conf=0.99, col="red")
   confEllipse(testMVR, conf=0.9, col="lightblue")
 }
+
 
 }

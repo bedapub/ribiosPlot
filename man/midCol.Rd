@@ -7,7 +7,8 @@
 midCol(col1, col2)
 }
 \arguments{
-\item{col1}{Character string, represting the first color. It can be of length 2 or 1; in the former case, \code{col2} should be missing}
+\item{col1}{Character string, represting the first color. It can be of
+length 2 or 1; in the former case, \code{col2} should be missing}
 
 \item{col2}{Character string, represting the second color}
 }
@@ -18,6 +19,7 @@ The midpoint color of the two in the Lab space.
 Blender two colors to get the midpoint color of two colors
 }
 \examples{
+
 midCol("black", "red")
 midCol(c("black", "red"))
 \dontrun{
@@ -40,4 +42,5 @@ points(x=rep(1:nCol, each=3),
 text(0, c(1.5, 2.5, 3.5), c("Second", "Midpoint", "First"),
      pos=4)
 }
+
 }

@@ -18,6 +18,8 @@ NULL, side effect is used
 Print PCAScoreMatrix
 }
 \examples{
+
 myPCmat <- PCAScoreMatrix(matrix(rnorm(15),ncol=3), c(0.25, 0.15, 0.1))
 myPCmat
+
 }

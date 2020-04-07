@@ -9,11 +9,15 @@ pcaScores(x, choices, offset, reverse = c(FALSE, FALSE))
 \arguments{
 \item{x}{An object of prcomp}
 
-\item{choices}{Integer vector, indices of principal components, default the first two PCs. If missing, \code{NULL} or \code{NA}, all PCs are returned.}
+\item{choices}{Integer vector, indices of principal components, default the
+first two PCs. If missing, \code{NULL} or \code{NA}, all PCs are returned.}
 
-\item{offset}{Oither one or more rows's names in the loading matrix, or indices, or a logical vector. The average loading of the rows specified by offset is set to zero.}
+\item{offset}{Oither one or more rows's names in the loading matrix, or
+indices, or a logical vector. The average loading of the rows specified by
+offset is set to zero.}
 
-\item{reverse}{Logical of length 2 or 1 (which will be repeated to 2), indicating whether the sign of values in the 1st/2nd axis should be reversed}
+\item{reverse}{Logical of length 2 or 1 (which will be repeated to 2),
+indicating whether the sign of values in the 1st/2nd axis should be reversed}
 }
 \description{
 Retrieve PCA scores from prcomp objects
@@ -29,4 +33,19 @@ colMeans(as.matrix(testPCAscores.withOffset)[c(1,3,5),])
 
 testPCAscores.withReverse <- pcaScores(testPCA, reverse=c(TRUE, FALSE))
 colMeans(as.matrix(testPCAscores.withReverse)[c(1,3,5),])
+Retrieve PCA scores from prcomp objects
+
+
+
+testMatrix <- matrix(rnorm(1000), nrow=10)
+testPCA <- prcomp(testMatrix)
+testPCAscores <- pcaScores(testPCA)
+
+testPCAscores.withOffset <- pcaScores(testPCA, offset=c(1,3,5))
+## notice the average of offset-rows are near zero
+colMeans(as.matrix(testPCAscores.withOffset)[c(1,3,5),])
+
+testPCAscores.withReverse <- pcaScores(testPCA, reverse=c(TRUE, FALSE))
+colMeans(as.matrix(testPCAscores.withReverse)[c(1,3,5),])
+
 }

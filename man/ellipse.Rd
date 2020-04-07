@@ -46,6 +46,7 @@ Add an ellipse in an existing plot
 }
 \examples{
 
+
 if(interactive()) {
   plot.new()
   plot.window(xlim=c(-1, 1), ylim=c(-1,1))
@@ -57,4 +58,5 @@ if(interactive()) {
   ellipse(0, 0, a=1, b=1, col="black", lwd=2)
   ellipse(0, 0, a=0.5, b=0.5, fill="steelblue")
 }
+
 }

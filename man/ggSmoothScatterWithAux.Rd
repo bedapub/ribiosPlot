@@ -2,7 +2,8 @@
 % Please edit documentation in R/ggSmoothScatter.R
 \name{ggSmoothScatterWithAux}
 \alias{ggSmoothScatterWithAux}
-\title{Mimicking the graphics::smoothScatter behaviour for GGally::ggpairs, with aux lines}
+\title{Mimicking the graphics::smoothScatter behaviour for GGally::ggpairs, with
+aux lines}
 \usage{
 ggSmoothScatterWithAux(
   data,
@@ -29,5 +30,6 @@ ggSmoothScatterWithAux(
 Compared with \code{ggSmoothScatter},}
 }
 \description{
-Mimicking the graphics::smoothScatter behaviour for GGally::ggpairs, with aux lines
+Mimicking the graphics::smoothScatter behaviour for GGally::ggpairs, with
+aux lines
 }

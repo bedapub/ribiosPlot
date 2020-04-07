@@ -24,11 +24,11 @@ ggSmoothScatter(
 
 \item{ylim}{NULL or a vector of two numbers}
 
-\item{...}{Other parameters passed to stat_density_2d
-
-#' @note 
-So far the outliers are not plotted, to be done later}
+\item{...}{Other parameters passed to stat_density_2d}
 }
 \description{
 Mimicking the graphics::smoothScatter behaviour for GGally::ggpairs
+}
+\note{
+So far the outliers are not plotted, to be done later
 }

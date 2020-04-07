@@ -16,6 +16,8 @@ Degree value
 Convert radian to degree values
 }
 \examples{
+
 radian2degree(2*pi)
 radian2degree(-.5*pi)
+
 }

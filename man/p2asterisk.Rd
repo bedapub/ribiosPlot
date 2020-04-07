@@ -7,17 +7,24 @@
 p2asterisk(p, use0.1 = TRUE)
 }
 \arguments{
-\item{p}{Numerical, p values (between 0 and 1), can be a matrix or more generally an array}
+\item{p}{Numerical, p values (between 0 and 1), can be a matrix or more
+generally an array}
 
 \item{use0.1}{Logical, whether a dot should be displayed if 0.05<p<0.1}
 }
 \value{
 A character vector of the same length as \code{p} of asterisk symbols. In case \code{p} is an array, both `dim` and `dimnames` properties are copied to the returning value.
+
+A character vector of the same length as \code{p} of asterisk
+symbols. In case \code{p} is an array, both `dim` and `dimnames` properties
+are copied to the returning value.
 }
 \description{
 The function map p values into asterisks by common definitions
 }
 \note{
+\code{NA} will be mapped to empty strings.
+
 \code{NA} will be mapped to empty strings.
 }
 \examples{
@@ -27,4 +34,17 @@ stopifnot(identical(myPasterisks, c("***", "*", "", "", "", "**")))
 
 myPasterisks2 <- p2asterisk(myPvals, use0.1=TRUE)
 stopifnot(identical(myPasterisks2, c("***", "*", "", ".", "",  "**")))
+Convert p values into asterisks
+
+The function map p values into asterisks by common definitions
+
+
+
+myPvals <- c(0.0005, 0.02, 0.4, 0.075, NA, 0.0044)
+myPasterisks <- p2asterisk(myPvals, use0.1=FALSE)
+stopifnot(identical(myPasterisks, c("***", "*", "", "", "", "**")))
+
+myPasterisks2 <- p2asterisk(myPvals, use0.1=TRUE)
+stopifnot(identical(myPasterisks2, c("***", "*", "", ".", "",  "**")))
+
 }

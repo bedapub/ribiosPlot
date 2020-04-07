@@ -9,9 +9,11 @@ getExpVarLabel(ev, choices, compact = FALSE)
 \arguments{
 \item{ev}{A numeric vector of explained variances}
 
-\item{choices}{An integer vector to indicate which PCs to be returned. If \code{NULL} or \code{NA} or missing, all elements are returned.}
+\item{choices}{An integer vector to indicate which PCs to be returned. If
+\code{NULL} or \code{NA} or missing, all elements are returned.}
 
-\item{compact}{Logical, either a \code{compact} label is returned, see examples.}
+\item{compact}{Logical, either a \code{compact} label is returned, see
+examples.}
 }
 \description{
 Helper function to print PC and explained variances

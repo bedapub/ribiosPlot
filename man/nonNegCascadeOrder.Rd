@@ -7,13 +7,16 @@
 nonNegCascadeOrder(matrix)
 }
 \arguments{
-\item{matrix}{A matrix with non-negative maximum values of rows. 
+\item{matrix}{A matrix with non-negative maximum values of rows.
 
-The function is internally called by \code{\link{cascadeOrder}} to order the rows of the matrix with non-negative maximum values.
-The function works by ordering the rows by peaks (in which column does the value peak?) and then by maximum values (what are the maximum values?).
-In case of invariant rows and rows of NAs, they are put at last.
+The function is internally called by \code{\link{cascadeOrder}} to order the
+rows of the matrix with non-negative maximum values. The function works by
+ordering the rows by peaks (in which column does the value peak?) and then
+by maximum values (what are the maximum values?). In case of invariant rows
+and rows of NAs, they are put at last.
 
-If maximum values of the rows are negative, negate the matrix before passing it to the matrix (see \code{\link{cascadeOrder}}).}
+If maximum values of the rows are negative, negate the matrix before passing
+it to the matrix (see \code{\link{cascadeOrder}}).}
 }
 \description{
 Order rows of a matrix with non-negative maximum values in the cascade order

@@ -9,22 +9,26 @@
 \arguments{
 \item{x}{A \code{PCAScoreMatrix} object}
 
-\item{choices}{Either a logical/integer vector to indicate which PCs to be returned, 
-or \code{NULL} or missing, in which case all PCs are returned}
+\item{choices}{Either a logical/integer vector to indicate which PCs to be
+returned, or \code{NULL} or missing, in which case all PCs are returned}
 
-\item{compact}{Logical, either a \code{compact} label is returned, see examples.}
+\item{compact}{Logical, either a \code{compact} label is returned, see
+examples.}
 }
 \value{
-A character string vector of the same length as \code{choices} (or the same length as the column count of the PCAScoreMatrix), 
-  which are the labels of the PCs
+A character string vector of the same length as \code{choices} (or
+the same length as the column count of the PCAScoreMatrix), which are the
+labels of the PCs
 }
 \description{
 Labels of principal components from PCAScoreMatrix
 }
 \examples{
+
 pcaMat <- PCAScoreMatrix(matrix(rnorm(15),ncol=3), c(0.25, 0.15, 0.1))
 expVarLabel(pcaMat)
 expVarLabel(pcaMat, choices=1:2)
 expVarLabel(pcaMat, choices=1:2, compact=TRUE)
 expVarLabel(pcaMat, choices=c(1,3), compact=TRUE)
+
 }

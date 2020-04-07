@@ -2,7 +2,8 @@
 % Please edit documentation in R/expVar.R
 \name{expVarLabel}
 \alias{expVarLabel}
-\title{Generic function expVarLabel to generate a label of explained variance from prcomp and PCAScoreMatrix objects}
+\title{Generic function expVarLabel to generate a label of explained variance from
+prcomp and PCAScoreMatrix objects}
 \usage{
 expVarLabel(x, choices, compact)
 }
@@ -14,5 +15,6 @@ expVarLabel(x, choices, compact)
 \item{compact}{Logical, whether a compact format is returned, see example}
 }
 \description{
-Generic function expVarLabel to generate a label of explained variance from prcomp and PCAScoreMatrix objects
+Generic function expVarLabel to generate a label of explained variance from
+prcomp and PCAScoreMatrix objects
 }

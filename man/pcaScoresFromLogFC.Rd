@@ -2,26 +2,33 @@
 % Please edit documentation in R/pcaPlots.R
 \name{pcaScoresFromLogFC}
 \alias{pcaScoresFromLogFC}
-\title{Perform principal component analysis and derive PCA scores from a logFC matrix}
+\title{Perform principal component analysis and derive PCA scores from a logFC
+matrix}
 \usage{
 pcaScoresFromLogFC(lfcMat, reference = 0, choices, reverse = c(FALSE, FALSE))
 }
 \arguments{
-\item{lfcMat}{Log fold-chnage matrix, genes (features) in rows and samples in columns}
+\item{lfcMat}{Log fold-chnage matrix, genes (features) in rows and samples
+in columns}
 
-\item{reference}{The reference value that should be set as 0 in the scores, default: 0}
+\item{reference}{The reference value that should be set as 0 in the scores,
+default: 0}
 
 \item{choices}{How many PCs should be retured. Passed to \code{pcaScores}}
 
-\item{reverse}{Whether the axes should be reversed. Passed to \code{pcaScores}
+\item{reverse}{Whether the axes should be reversed. Passed to
+\code{pcaScores}
 
-Perform PCA and get scores from a logFC matrix by setting 
-a pseudo profile of no change (0 for all features) at the origin point}
+Perform PCA and get scores from a logFC matrix by setting a pseudo profile
+of no change (0 for all features) at the origin point}
 }
 \description{
-Perform principal component analysis and derive PCA scores from a logFC matrix
+Perform principal component analysis and derive PCA scores from a logFC
+matrix
 }
 \examples{
+
 lfcMat <- matrix(rnorm(9), nrow=3)
 pcaScoresFromLogFC(lfcMat)
+
 }
