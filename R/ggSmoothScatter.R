@@ -9,14 +9,14 @@
 #' #' @note 
 #' So far the outliers are not plotted, to be done later
 #' 
-#' #' @importFrom ggplot2 ggplot stat_density_2d scale_fill_gradientn geom_vline geom_hline aes scale_x_continuous scale_y_continuous
+#' #' @importFrom ggplot2 ggplot stat_density_2d scale_fill_gradientn geom_vline geom_hline aes scale_x_continuous scale_y_continuous stat
 #' @export
 ggSmoothScatter <- function(data, mapping, 
                             colours=colorRampPalette(c("white",blues9[5:9], 
                                                        "black"))(256),
                             xlim=NULL, ylim=NULL, ...){
   p <- ggplot(data = data, mapping = mapping) + 
-    stat_density_2d(aes(fill=..density..^0.25, alpha=1), 
+    stat_density_2d(aes(fill=stat(density)^0.25, alpha=1), 
                     geom="tile", contour = FALSE,  ...) +
     scale_fill_gradientn(colours=colours) 
   if(!is.null(xlim))
