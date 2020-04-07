@@ -50,6 +50,7 @@ Collate:
     plotVenn.R
     figurePanel.R
     ggSmoothScatter.R
+    ribiosPlot-package.R
 Enhances: Vennerable
 License: GPL-3
 LazyLoad: yes
