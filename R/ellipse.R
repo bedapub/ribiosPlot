@@ -1,26 +1,34 @@
 #' Convert radian to degree values
-#'
-#' @param x Radian value
 #' 
+#' @param x Radian value
 #' @return Degree value
 #' @examples
+#' 
 #' radian2degree(2*pi)
 #' radian2degree(-.5*pi)
+#' 
+#' @export radian2degree
 radian2degree <- function(x) x/pi*180
 
+
 #' Convert degree to radian values
-#'
-#' @param x Degree value
 #' 
+#' 
+#' @param x Degree value
 #' @return Radian value
 #' @examples
 #' 
+#' 
 #' degree2radian(90)
 #' degree2radian(-225)
+#' 
+#' @export degree2radian
 degree2radian <- function(x) x/180*pi
 
+
 #' Add an ellipse in an existing plot
-#'
+#' 
+#' 
 #' @param x0 x-coordinate of the ellipse center
 #' @param y0 y-coordinate of the ellipse center
 #' @param a Length of semi-major axis
@@ -31,10 +39,10 @@ degree2radian <- function(x) x/180*pi
 #' @param fill Ellipse fill color
 #' @param border Equivalent to \code{col}
 #' @param ... further parameters passed to \code{\link{polygon}}
-#'
 #' @return Invisible coordinates of points on the ellipse
 #' @examples
-#'
+#' 
+#' 
 #' if(interactive()) {
 #'   plot.new()
 #'   plot.window(xlim=c(-1, 1), ylim=c(-1,1))
@@ -46,6 +54,8 @@ degree2radian <- function(x) x/180*pi
 #'   ellipse(0, 0, a=1, b=1, col="black", lwd=2)
 #'   ellipse(0, 0, a=0.5, b=0.5, fill="steelblue")
 #' }
+#' 
+#' @export ellipse
 ellipse <- function(x0=0, y0=0, a=1, b=2,
                     alpha=0, length=1000,
                     col=NULL, fill=NA, border, ...) {
@@ -81,16 +91,18 @@ confEllipseParams <- function(x,y=NULL, conf=0.95) {
     return(res)
 }
 
+
+
 #' Plot confidence ellipse based on two-dimenstional data
-#'
+#' 
 #' @param x either a matrix of two columns, or a numeric vector
 #' @param y either a numeric vector of the same length as \code{x}, or NULL
 #' @param conf Confidence interval of the ellipse
 #' @param ... Parameters passed to \code{ellipse}
-#'
 #' @return Invisible coordinates of points on the ellipse
 #' @examples
-#'
+#' 
+#' 
 #' if(interactive()) {
 #'   testX <- rnorm(100, mean=1, sd=2)
 #'   testY <- rnorm(100, mean=2, sd=3)
@@ -99,7 +111,7 @@ confEllipseParams <- function(x,y=NULL, conf=0.95) {
 #'   confEllipse(testX, testY, conf=0.99, col="red", lwd=2)
 #'   confEllipse(testX, testY, conf=0.9, col="red", lwd=0.5)
 #' }
-#'
+#' 
 #' if(interactive() & require("MASS")) {
 #'   testMVR <- mvrnorm(n=100, mu=c(2,3), Sigma=matrix(c(1, 0.65, 0.65, 1), nrow=2))
 #'   plot(testMVR, pch=16, xlim=c(-2,6), ylim=c(0,6))
@@ -108,6 +120,8 @@ confEllipseParams <- function(x,y=NULL, conf=0.95) {
 #'   confEllipse(testMVR, conf=0.9, col="lightblue")
 #' }
 #' 
+#' 
+#' @export confEllipse
 confEllipse <- function(x, y=NULL, conf=0.95, ...)  {
     params <- confEllipseParams(x=x, y=y, conf=conf)
     ellipse(x0=params$mean[1], y0=params$mean[2],

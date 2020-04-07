@@ -4,9 +4,16 @@
 #' 
 ## @importFrom grid gpar textGrob
 ## @importFrom gridExtra arrangeGrob
-#' @return A \code{grob} object
+
+
+#' Make a figure panel with title
 #' 
-#' @examples 
+#' @param gg A \code{grob} object
+#' @param title Character, title of the plot panel, e.g. \code{A}, \code{(B)},
+#' etc.
+#' @return A \code{grob} object
+#' @examples
+#' 
 #' require("ggplot2")
 #' df <- data.frame(
 #'   gp = factor(rep(letters[1:3], each = 10)),
@@ -36,6 +43,7 @@
 #' layoutMat <- matrix(c(1,2), nrow=1)
 #' gridExtra::grid.arrange(grobs=list(panelA, panelB),
 #'  layout_matrix=layoutMat)
+#' 
 figurePanel <- function(gg, title) {
   titleg <- grid::textGrob(title, x=unit(0, "npc"), y=unit(1, "npc"), 
                           just=c("left", "top"),

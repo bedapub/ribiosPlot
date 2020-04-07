@@ -1,6 +1,65 @@
 ## colorpanel function was created in the gplots package (CRAN)
 ## using with the GPL-2 license
 isOdd <- function(x) x%%2 == 1
+
+#' Generates a set of colors that varies smoothly.
+#' 
+#' (copied from the \code{colorpanel} man page from the \code{gplots} package.
+#' See NOTES below)
+#' 
+#' The values for \sQuote{low, mid, high} can be given as color names
+#' (\sQuote{red}), plot color index (\code{2}=red), and HTML-style RGB,
+#' (\dQuote{\#FF0000}=red).
+#' 
+#' If \sQuote{mid} is supplied, then the returned color panel will consist of
+#' \sQuote{n - floor(n/2)} HTML-style RGB elements which vary smoothly between
+#' \sQuote{low} and \sQuote{mid}, then between \sQuote{mid} and \sQuote{high}.
+#' Note that if \sQuote{n} is even, the color \sQuote{mid} will occur twice at
+#' the center of the sequence.
+#' 
+#' If \sQuote{mid} is omitted, the color panel will vary smoothly beween
+#' \sQuote{low} and \sQuote{high}.
+#' 
+#' @param n Desired number of color elements in the panel
+#' @param low Color to use for the lowest value
+#' @param mid Color to use for the middle value. It may be ommited
+#' @param high Color to use for the highest value
+#' @return Vector of HTML-style RGB colors.
+#' @note The colorpanel function is copied from the \code{gplots} package
+#' (written by Warnes et al.) under the GPL-2 license. The \code{gplots}
+#' require heavy dependencies that prevent this function being used in
+#' speed-sensitive scenarios, e.g. in command-line tools.
+#' @author Originally by Gregory R. Warnes <greg@@warnes.net>. Adapted by Jitao
+#' David Zhang <jitao_david.zhang@@roche.com>.
+#' @seealso \code{blackyellow} and \code{royalbluered} for two- and three-color
+#' panels.
+#' @references See \code{gplots} package.
+#' @examples
+#' 
+#' showpanel <- function(col) {
+#'   image(z=matrix(1:100, ncol=1), col=col, xaxt="n", yaxt="n")
+#' }
+#'  
+#' par(mfrow=c(3,3))
+#'  
+#' # two colors only:
+#' showpanel(colorpanel(8,low="red",high="green"))
+#'  
+#' # three colors
+#' showpanel(colorpanel(8,"red","black","green"))
+#' # note the duplicatation of black at the center, using an odd
+#' # number of elements resolves this:
+#' showpanel(colorpanel(9,"red","black","green"))
+#'  
+#' showpanel(greenred(64))
+#' showpanel(redgreen(64))
+#' showpanel(bluered(64))
+#' showpanel(redblue(64))
+#' 
+#' showpanel(royalbluered(64))
+#' showpanel(royalredblue(64))
+#' 
+#' @export colorpanel
 colorpanel <- function (n, low, mid, high) {
     if (missing(mid) || missing(high)) {
         low <- col2rgb(low)
@@ -38,6 +97,48 @@ colorpanel <- function (n, low, mid, high) {
 
 ## colors for factors
 ## fbrewer returns a vector of colors matching a factor, and its base colors
+
+
+#' Factor color brewer
+#' 
+#' The function generates a vector of color names for a factor(-like) object.
+#' 
+#' When using \code{brewer.pal} to generate palettes, the panel is
+#' automatically expanded using \code{\link[grDevices]{colorRampPalette}} when
+#' the number of levels of the input factor exceeds the limit of respective
+#' panel. This is done automatically.
+#' 
+#' @param factor A vector of factors. Non-factors will be cast to factors by
+#' calling the \code{factor} function.
+#' @param panel This parameter can take three types of values: (1) a color set
+#' name defined in \code{brewer.pal.info} in the RColorBrewer package, (2) a
+#' function (or the name of a function) that takes an integer as input and
+#' returns a vector of colors that will be used as the base colors of levels of
+#' the factor, or (3) a character vector which represents the base colors. In
+#' the last case, the length of the vector must match the number of levels of
+#' the factor. See examples below.
+#' @return An \code{fcol} object encoding colors matching the factors as well
+#' as the base colors. The latter is often needed in figure legends.
+#' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
+#' @seealso \code{brewer.pal.info} for color panels.
+#' @examples
+#' 
+#' testFactor <- gl(4,25)
+#' testCol1 <- fcbrewer(testFactor, panel="Set2")
+#' testCol2 <- fcbrewer(testFactor, panel=heat.colors)
+#' testCol3 <- fcbrewer(testFactor, panel="heat.colors")
+#' testCol4 <- fcbrewer(testFactor, panel=c("black", "green", "orange", "lightblue"))
+#' 
+#' testRan <- runif(100)
+#' ## use colors of each item and colors of each level
+#' plot(testRan, pch=21, bg=testCol1)
+#' legend("topright", legend=paste("Class", 1:4),
+#'        pch=21, pt.bg=fcbase(testCol1))
+#' 
+#' ## boxplot uses colors matching to each level only
+#' boxplot(testRan ~ testFactor, col=fcbase(testCol1))
+#' 
+#' @export fcbrewer
 fcbrewer <- function(factor, panel="Set1") {
   if(!is.factor(factor)) factor <- factor(factor)
   nlevel <- nlevels(factor)
@@ -85,6 +186,44 @@ brewer.pal.factorLevels <- function(factor, name="Greys") {
   return(cols)
 }
 
+
+
+#' Build brewer.pal colors from factor (Deprecated)
+#' 
+#' The functionality has been replaced by \code{fcbrewer}. The functions will
+#' be removed in the future release.
+#' 
+#' The function is useful to build named RGB color values from factors.
+#' \code{brewer.pal.factor} return a color-HTML-string vector as the same
+#' length of the input factor vector, which is named by the input factor as
+#' well. \code{brewer.pal.factorLevels} returns a color vector of the length of
+#' the factor level, and the colors are named by the levels. See examples
+#' below.
+#' 
+#' From version 1.1-16, the color palette is automatically reduced/expanded
+#' when the levels of input factors underlies or exceeds the minimum and
+#' maximum colors. See example below.
+#' 
+#' @aliases brewer.pal.factor brewer.pal.factorLevels
+#' @param factor A factor vector
+#' @param name Color panel name to be passed to \code{brewer.pal}
+#' @return Named HTML RGB colors.
+#' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
+#' @examples
+#' 
+#' \dontrun{
+#' myFac <- factor(c("HSV", "BVB", "FCB", "HSV", "BVB", "HSV"))
+#' brewer.pal.factor(myFac, name="Set1")
+#' brewer.pal.factorLevels(myFac, name="Set1")
+#' 
+#' myLongFac <- factor(paste("Sample", 1:20))
+#' brewer.pal.factor(myLongFac, name="Set1")
+#' 
+#' myShortFac <- factor(paste("Sample", 1:2))
+#' brewer.pal.factor(myShortFac, name="Set1")
+#' }
+#' 
+#' @export brewer.pal.factor
 brewer.pal.factor <- function(factor, name="Greys") {
   .Deprecated("fcbrewer")
   colbase <- brewer.pal.factorLevels(factor=factor, name=name)
@@ -99,6 +238,31 @@ brewer.pal.factor <- function(factor, name="Greys") {
 ##-------------------- three-color (or more) systems --------------------##
 
 RIBIOS_BLUEREDS <- c("#2166AC", "#D1E5F0", "white", "#FDDBC7", "#B2182B")
+
+
+#' Three-color panels
+#' 
+#' Precompiled three-color panels for visualization purposes
+#' 
+#' \code{threecolor.panels} returns all available three-color panels.
+#' \code{display.threecolor.panels} display available three-color panels.
+#' 
+#' For the rest see function definitions
+#' 
+#' @aliases royalbluered royalredblue royalbluegrayred royalredgrayblue turyeb
+#' redgreen greenred bluered redblue redblackblue cyanblackyellow
+#' yellowblackcyan blueblackred blackredyellow blackgoldred whiteblueblackheat
+#' heat magentayellow yellowmagenta threecolor.panels display.threecolor.panels
+#' @param n Number of colors needed
+#' @param nc Number of color columns
+#' @return Character vector of length \code{n} coding colors
+#' @author Jitao David Zhang
+#' @seealso \code{\link{blackyellow}} for two-color systems
+#' @examples
+#' 
+#' display.threecolor.panels()
+#' 
+#' @export royalbluered
 royalbluered <- function(n) colorRampPalette(RIBIOS_BLUEREDS,
                                              space="Lab")(n)
 royalredblue <- function(n) colorRampPalette(rev(RIBIOS_BLUEREDS),
@@ -135,6 +299,29 @@ whiteblueblackheat <- function(n) colorRampPalette(c("white", "blue", "blue3", "
 heat <- function(n)  colorRampPalette(c("transparent", blues9, "black", "red3", "red", "yellow"))(n)
 
 ##-------------------- two-color systems --------------------##
+
+
+#' Two-color panels
+#' 
+#' Precompiled two-color panels for visualization purposes
+#' 
+#' \code{twocolor.panels} returns all available two-color panels.
+#' \code{display.twocolor.panels} display available two-color panels.
+#' 
+#' For the rest see function definitions.
+#' 
+#' @aliases blackyellow yellowblack whiteblue whitered blackred blackgreen
+#' whiteblack blackwhite twocolor.panels display.twocolor.panels
+#' @param n Number of colors needed
+#' @param nc Number of color columns
+#' @return Character vector of length \code{n} coding colors
+#' @author Jitao David Zhang
+#' @seealso \code{\link{royalbluered}} for three-color systems
+#' @examples
+#' 
+#' display.twocolor.panels()
+#' 
+#' @export blackyellow
 blackyellow <- function(n) colorpanel(n, "black", "yellow")
 yellowblack <- function(n) colorpanel(n, "yellow", "black")
 
@@ -196,12 +383,16 @@ display.threecolor.panels <- function (nc=20) {
 }
 
 
+
+
 #' Blender two colors to get the midpoint color of two colors
-#' @param col1 Character string, represting the first color. It can be of length 2 or 1; in the former case, \code{col2} should be missing
+#' 
+#' @param col1 Character string, represting the first color. It can be of
+#' length 2 or 1; in the former case, \code{col2} should be missing
 #' @param col2 Character string, represting the second color
 #' @return The midpoint color of the two in the Lab space.
-#' 
 #' @examples
+#' 
 #' midCol("black", "red")
 #' midCol(c("black", "red"))
 #' \dontrun{
@@ -224,6 +415,8 @@ display.threecolor.panels <- function (nc=20) {
 #' text(0, c(1.5, 2.5, 3.5), c("Second", "Midpoint", "First"),
 #'      pos=4)
 #' }
+#' 
+#' @export midCol
 midCol <- function(col1, col2) {
   if(missing(col2)) {
     if(length(col1)==2) {

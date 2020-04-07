@@ -17,6 +17,31 @@
 #' testPCAscores.withReverse <- pcaScores(testPCA, reverse=c(TRUE, FALSE))
 #' colMeans(as.matrix(testPCAscores.withReverse)[c(1,3,5),])
 
+#' Retrieve PCA scores from prcomp objects
+#' 
+#' 
+#' @param x An object of prcomp
+#' @param choices Integer vector, indices of principal components, default the
+#' first two PCs. If missing, \code{NULL} or \code{NA}, all PCs are returned.
+#' @param offset Oither one or more rows's names in the loading matrix, or
+#' indices, or a logical vector. The average loading of the rows specified by
+#' offset is set to zero.
+#' @param reverse Logical of length 2 or 1 (which will be repeated to 2),
+#' indicating whether the sign of values in the 1st/2nd axis should be reversed
+#' @examples
+#' 
+#' testMatrix <- matrix(rnorm(1000), nrow=10)
+#' testPCA <- prcomp(testMatrix)
+#' testPCAscores <- pcaScores(testPCA)
+#' 
+#' testPCAscores.withOffset <- pcaScores(testPCA, offset=c(1,3,5))
+#' ## notice the average of offset-rows are near zero
+#' colMeans(as.matrix(testPCAscores.withOffset)[c(1,3,5),])
+#' 
+#' testPCAscores.withReverse <- pcaScores(testPCA, reverse=c(TRUE, FALSE))
+#' colMeans(as.matrix(testPCAscores.withReverse)[c(1,3,5),])
+#' 
+#' @export pcaScores
 pcaScores <- function(x, choices, offset, reverse=c(FALSE, FALSE)) {
   stopifnot(all(is.logical(reverse)) & length(reverse)<=2)
   reverse <- rep(reverse, length.out=2)
@@ -58,52 +83,68 @@ pcaScores <- function(x, choices, offset, reverse=c(FALSE, FALSE)) {
 }
 
 #' S3 method plotPCA
+#' 
+#' 
 #' @param x A prcomp object
 #' @param choices Integer index, choices to plot
 #' @param ... Other parameters
+#' @export plotPCA
 plotPCA <- function(x, choices, ...) UseMethod("plotPCA")
+
+
 
 #' Visualise PCA results of expression data with the sample plot
 #' 
-#' \code{plotPCA} is designed to visualize sample relationships revealed
-#' by PCA analysis of high-dimensional expression data. It is adapted
-#' from the \code{biplot} function in the \code{stats} package, with
-#' functionalities useful for sample visualization and labelling, and removing
-#' the visualization of features (usually genes) in the input matrix. The
-#' rationale is that in most cases there are too many features to provide
-#' an informative visualization.
+#' \code{plotPCA} is designed to visualize sample relationships revealed by PCA
+#' analysis of high-dimensional expression data. It is adapted from the
+#' \code{biplot} function in the \code{stats} package, with functionalities
+#' useful for sample visualization and labelling, and removing the
+#' visualization of features (usually genes) in the input matrix. The rationale
+#' is that in most cases there are too many features to provide an informative
+#' visualization.
+#' 
+#' The values for \code{text}, \code{points} and \code{arrows} can be
+#' \enumerate{ \item Logical. If \code{FALSE}, no text or point is added.
+#' \item List. A list containing options passed to \code{text}, \code{points},
+#' and \code{arrows} respectively, such as \code{col}, \code{cex}, \code{lwd},
+#' \code{lty}, \code{code}, \code{length},\code{angle}, and \code{pos} (only
+#' for \code{text}).  \code{order} decides in what order are the points drawn,
+#' which can be useful when there are points to be drawn 'above' other points.
+#' \item A vector of character strigns (only for \code{text}) } See examples
+#' below.
 #' 
 #' @param x \code{prcomp} object produced by the \code{prcomp} function
-#' @param choices An integer vector of length 2, indicating which PCs to visualize. By default the first (X-axis) and second (Y-axis) are visualized
-#' @param text A logical value or a list of options to label samples. See Details.
-#' @param points A logical value or a list of options to pinpoint samples. See details.
+#' @param choices An integer vector of length 2, indicating which PCs to
+#' visualize. By default the first (X-axis) and second (Y-axis) are visualized
+#' @param text A logical value or a list of options to label samples. See
+#' Details.
+#' @param points A logical value or a list of options to pinpoint samples. See
+#' details.
 #' @param arrows A logical or a list of options to draw arrows.
-#' @param grid Logical value, indicating whether grid lines should be added to the plot.
+#' @param grid Logical value, indicating whether grid lines should be added to
+#' the plot.
 #' @param abline A logical or a list of options to draw abline
 #' @param xlim xlim of the plot. Automatically determined if missing.
 #' @param ylim ylim of the plot. Automatically determined if missing.
-#' @param xlab xlab of the plot. If missing, the PC and the explained variability are shown.
-#' @param ylab ylab of the plot. If missing, the PC and the explained variability are shown.
-#' @param offset Offset should be either one or more rows's names in the loading matrix, or indices, or a logical vector. The average loading of the rows specified by offset is set to zero.
+#' @param xlab xlab of the plot. If missing, the PC and the explained
+#' variability are shown.
+#' @param ylab ylab of the plot. If missing, the PC and the explained
+#' variability are shown.
+#' @param offset Offset should be either one or more rows's names in the
+#' loading matrix, or indices, or a logical vector. The average loading of the
+#' rows specified by offset is set to zero.
 #' @param main Title of the plot
-#' @param reverse ogical of length 2 or 1 (which will be repeated to 2), indicating whether the sign of values in the 1st/2nd axis should be reversed.
+#' @param reverse ogical of length 2 or 1 (which will be repeated to 2),
+#' indicating whether the sign of values in the 1st/2nd axis should be
+#' reversed.
 #' @param ... Other parameters passed to \code{plot.window}
+#' @return The value of the rotated data, namely the centered (and scaled if
+#' requested) data multiplied by the rotation matrix.
+#' @note \code{prcomp} should be called with \code{retx=TRUE}, which is the
+#' default behaviour.
+#' @seealso \code{prcomp} and \code{pcaScores}
+#' @examples
 #' 
-#' @details 
-#'   The values for \code{text}, \code{points} and \code{arrows} can be
-#'   \enumerate{
-#'   \item Logical. If \code{FALSE}, no text or point is added.
-#'   \item List. A list containing options passed to \code{text},  \code{points}, and \code{arrows} respectively, such as \code{col},
-#'   \code{cex}, \code{lwd}, \code{lty}, \code{code}, \code{length},\code{angle}, and  \code{pos} (only for \code{text}). 
-#'   \code{order} decides in what order are the points drawn, which can be useful when there are points to be drawn 'above' other points.
-#'   \item A vector of character strigns (only for \code{text})
-#'   }
-#' See examples below.
-#' 
-#' @return   The value of the rotated data, namely the centered (and scaled if requested) data multiplied by the rotation matrix.
-#' @note   \code{prcomp} should be called with \code{retx=TRUE}, which is the default behaviour.
-#' @seealso   \code{prcomp} and \code{pcaScores}
-#' @examples 
 #' testVal <- matrix(rnorm(10000), nrow=500)
 #' colnames(testVal) <- paste("Sample", 1:ncol(testVal), sep="")
 #' rownames(testVal) <- paste("Gene",1:nrow(testVal), sep="")
@@ -125,6 +166,7 @@ plotPCA <- function(x, choices, ...) UseMethod("plotPCA")
 #' rop <- par(mfrow=c(1,2), pty="s")
 #' plotPCA(testPCA, choices=c(1,2), grid=TRUE, points=pointsList, text=textList)
 #' plotPCA(testPCA, choices=c(2,3), grid=TRUE, points=pointsList, text=textList)
+#' 
 plotPCA.prcomp <- function(x,
                            choices=c(1,2),
                            text=FALSE,
@@ -365,18 +407,30 @@ plotPCAscores <- function(scores, class, legendX, legendY, title="",...) {
   par(xpd=F)
 }
 
-#' Perform principal component analysis and derive PCA scores from a logFC matrix
-#' @param lfcMat Log fold-chnage matrix, genes (features) in rows and samples in columns
-#' @param reference The reference value that should be set as 0 in the scores, default: 0
+
+
+#' Perform principal component analysis and derive PCA scores from a logFC
+#' matrix
+#' 
+#' Perform principal component analysis and derive PCA scores from a logFC
+#' matrix
+#' 
+#' 
+#' @param lfcMat Log fold-chnage matrix, genes (features) in rows and samples
+#' in columns
+#' @param reference The reference value that should be set as 0 in the scores,
+#' default: 0
 #' @param choices How many PCs should be retured. Passed to \code{pcaScores}
-#' @param reverse Whether the axes should be reversed. Passed to \code{pcaScores}
+#' @param reverse Whether the axes should be reversed. Passed to
+#' \code{pcaScores}
 #' 
-#' Perform PCA and get scores from a logFC matrix by setting 
-#' a pseudo profile of no change (0 for all features) at the origin point
+#' Perform PCA and get scores from a logFC matrix by setting a pseudo profile
+#' of no change (0 for all features) at the origin point
+#' @examples
 #' 
-#' @examples 
 #' lfcMat <- matrix(rnorm(9), nrow=3)
 #' pcaScoresFromLogFC(lfcMat)
+#' 
 pcaScoresFromLogFC <- function(lfcMat,
                                reference=0,
                                choices, reverse=c(FALSE, FALSE)) {

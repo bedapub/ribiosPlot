@@ -25,6 +25,56 @@ strbreak <- function (x, width = getOption("width"), exdent = 2, collapse = "\n"
 }
 
 
+
+
+#' Guess width and height parameters for a heatmap
+#' 
+#' guessWH helps \code{biosHeatmap} determines a proper canvas dimension as
+#' well as the proportion between legends and the main figure, especially in
+#' the command line mode.
+#' 
+#' \code{guessWH} determines for visual purposes the best height/width and
+#' legend/figure proportion for heatmaps. Interested users are invited to read
+#' the codes to get insights how the task is done.
+#' 
+#' @param nrow Row count of the matrix to be visualized
+#' @param ncol Column count of the matrix to be visualized
+#' @param rownames Row names of the matrix, helping to determine horizontal
+#' margins. Can be missing or set as \code{NULL}
+#' @param colnames Column names of the matrix, helping to determine vertical
+#' margins. Can me missing or set as \code{NULL}
+#' @param cexRow Row name font size. Can be missing or \code{NA}.
+#' @param cexCol Column name font size. Can be missing or \code{NA}.
+#' @param xlab X-axis (column side) name. Character string. Can be missing or
+#' \code{NA}
+#' @param ylab Y-axis (row side) name. Character string. Can be missing or
+#' \code{NA}
+#' @param width Width suggested by the user. Can be \code{NA}
+#' @param height Height suggested by the user. Can be \code{NA}
+#' @return A list of width proportions, height proportions, the total width and
+#' the total length.
+#' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
+#' @seealso \code{\link{biosHeatmap}}
+#' @examples
+#' 
+#' myMat <- matrix(rnorm(256), nrow=16)
+#' rownames(myMat) <- sample(paste(letters, LETTERS, sep="_"),16)
+#' colnames(myMat) <- sample(paste(LETTERS, letters, sep="_"), 16)
+#' guessWH(nrow=nrow(myMat), ncol=ncol(myMat), width=4, height=4)
+#' guessWH(nrow=nrow(myMat), ncol=ncol(myMat), width=NA, height=NA)
+#' myWH <- guessWH(nrow=nrow(myMat), ncol=ncol(myMat),
+#' xlab="321", ylab="ABC",
+#' rownames=rownames(myMat), colnames=colnames(myMat))
+#' 
+#' if(interactive()) {
+#' X11(width=myWH$width, height=myWH$height)
+#' biosHeatmap(myMat, lwid=myWH$lwid, lhei=myWH$lhei, xlab="321",
+#' ylab="ABC", cexRow=2L, cexCol=2L)
+#' dev.off()
+#' }
+#' 
+#' 
+#' @export guessWH
 guessWH <- function(nrow, ncol,
                     rownames, colnames,
                     cexRow, cexCol,
@@ -82,6 +132,84 @@ guessWH <- function(nrow, ncol,
   return(list(lwid=lwids, lhei=lheis, width=width, height=height))
 }
 
+
+
+#' CUSTOMED HEATMAP.2 FOR BIOS USERS
+#' 
+#' A tailored version of the \code{heatmap.2} function in the gplots package,
+#' by giving the default values in the paramter list.
+#' 
+#' Customed version of the heatmap.2, with the common settings used by JItao
+#' David Zhang
+#' 
+#' @param x A matrix
+#' @param Rowv Logical, whether row-wise dendrogram should be calculated
+#' @param Colv Logical, whether column-wise dendrogram should be calculated
+#' @param distfun Function, for calculating distance
+#' @param hclustfun Function, for hierarchical clustering. By default, the
+#' \code{ward.D2} method is used.
+#' @param dendrogram Character, specify which dendrogram to be drawn. Note that
+#' \code{Rowv} and \code{Colv} determines whether dendrograms are calculated
+#' and rows or columns are reordered.
+#' @param symm Logical. Should the matrix be treated as symmetric
+#' @param scale Logical, should the matrix be row-scaled
+#' @param na.rm Logical, should NA values should be omitted
+#' @param revC Logical, should columns be reversed
+#' @param add.expr Expression
+#' @param breaks Numeric vector, where to set breaks. Can be missing.
+#' @param symbreaks Logical, should be breaks symmetric
+#' @param colsep,rowsep Integer vector, positions at which columns or rows are
+#' separated
+#' @param sepcolor,sepwidth Color and width of separating lines
+#' @param cellnote Cell labelling
+#' @param notecex Cell labelling font size
+#' @param notecol Cell labelling font color
+#' @param tracecol Level trace
+#' @param hline Level trace hline
+#' @param vline Level trace vline
+#' @param linecol Level trace color
+#' @param main,xlab,ylab Heatmap title, X and Y axis labels
+#' @param labRow,labCol Row and column labels
+#' @param cexMain,cexRow,cexCol Title, row and column label font sizes
+#' @param ColSideColors,RowSideColors Column and row side colors
+#' @param color.key.title Color key title
+#' @param key Logical, whether key should be drawn
+#' @param keysize Key size
+#' @param denscol Logical, should density information be displayed
+#' @param symkey Logical, should the key be symmetric
+#' @param densadj densadj
+#' @param zlim zlim
+#' @param lmat lmat
+#' @param col Colors for the heatmap, by default green indicates low and red
+#' indicates high values
+#' @param trace Logical , whether drawing tracing lines, by default not
+#' @param density.info Logical, drawing density info in the key histogram, by
+#' default not
+#' @param na.color Color for \code{NA} cells, darkgray by default
+#' @param lwid Widths of columns
+#' @param lhei Heights of rows
+#' @param margins Margins of labs, automatically guessed if no value was
+#' provided
+#' @param \dots Other paramters passed to \code{heatmap.2} function
+#' @return See \code{heatmap.2} in the \code{gplots} package.
+#' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
+#' @examples
+#' 
+#' set.seed(123)
+#' test <- matrix(rnorm(100), nrow=10)
+#' biosHeatmap(test)
+#' 
+#' ## do not draw row-wise dendrogram
+#' biosHeatmap(test, Rowv=FALSE, dendrogram="column")
+#' ## do not draw column-wise dendrogram
+#' biosHeatmap(test, Colv=FALSE, dendrogram="row")
+#' ## do not re-sort columns/rows (e.g. for visualization purposes)
+#' biosHeatmap(test, Rowv=FALSE, Colv=FALSE, dendrogram="none")
+#' 
+#' ## define the color range by zlim
+#' biosHeatmap(test, zlim=c(-5, 5))
+#' 
+#' @export biosHeatmap
 biosHeatmap <- function (x,
                          ## dedrogram control
                          Rowv = TRUE,

@@ -1,4 +1,5 @@
 #' Mimicking the graphics::smoothScatter behaviour for GGally::ggpairs
+#' 
 #' @param data Data to be visualized, normally not directly set by the user
 #' @param mapping Data mapping, normally not directly set by the user
 #' @param colours Colours to be used
@@ -6,11 +7,9 @@
 #' @param ylim NULL or a vector of two numbers
 #' @param ... Other parameters passed to stat_density_2d
 #' 
-#' #' @note 
-#' So far the outliers are not plotted, to be done later
-#' 
-#' @importFrom ggplot2 ggplot stat_density_2d scale_fill_gradientn geom_vline geom_hline aes scale_x_continuous scale_y_continuous stat
-#' @export
+#' @importFrom ggplot2 ggplot stat_density_2d scale_fill_gradientn geom_vline 
+#' @importFrom ggplot2 geom_hline aes scale_x_continuous scale_y_continuous stat
+#' @note So far the outliers are not plotted, to be done later
 ggSmoothScatter <- function(data, mapping, 
                             colours=colorRampPalette(c("white",blues9[5:9], 
                                                        "black"))(256),
@@ -26,7 +25,11 @@ ggSmoothScatter <- function(data, mapping,
   p
 }
 
-#' Mimicking the graphics::smoothScatter behaviour for GGally::ggpairs, with aux lines
+
+
+#' Mimicking the graphics::smoothScatter behaviour for GGally::ggpairs, with
+#' aux lines
+#' 
 #' @param data Data to be visualized, normally not directly set by the user
 #' @param mapping Data mapping, normally not directly set by the user
 #' @param colours Colours to be used
@@ -34,9 +37,7 @@ ggSmoothScatter <- function(data, mapping,
 #' @param ylim NULL or a vector of two numbers
 #' @param ... Other parameters passed to stat_density_2d
 #' 
-#' Compared with \code{ggSmoothScatter}, 
-#' 
-#' @export
+#' Compared with \code{ggSmoothScatter},
 ggSmoothScatterWithAux <-  function(data, mapping,  
                                     colours=colorRampPalette(c("white",blues9[5:9], 
                                                                "black"))(256),

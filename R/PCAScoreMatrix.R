@@ -4,17 +4,21 @@
 
 #' Construct a S3-class PCAScoreMatrix object
 #' 
+#' 
 #' @param scoreMatrix Numeric matrix, objects in rows and PCs in columns
-#' @param expVar Numeric vector, length must equal the number of columns of \code{scoreMatrix}, explained variance by respective PCs
+#' @param expVar Numeric vector, length must equal the number of columns of
+#' \code{scoreMatrix}, explained variance by respective PCs
+#' @return A S3-class \code{PCAScoreMatrix} object, which is a score matrix
+#' with explained variances (expVar) as attribute.
+#' @seealso \code{as.matrix.PCAScoreMatrix}, \code{expVar.PCAScoreMatrix},
+#' \code{print.PCAScoreMatrix}. This function is usually not called by the end
+#' user; instead, it is used by the function \code{\link{pcaScores}}
+#' @examples
 #' 
-#' @return A S3-class \code{PCAScoreMatrix} object, which is a score matrix with explained variances (expVar) as attribute.
-#' 
-#' @seealso \code{as.matrix.PCAScoreMatrix}, \code{expVar.PCAScoreMatrix}, \code{print.PCAScoreMatrix}.
-#' This function is usually not called by the end user; instead, it is used by the function \code{\link{pcaScores}}
-#' 
-#' @examples 
 #' myPCmat <- PCAScoreMatrix(matrix(rnorm(15),ncol=3), c(0.25, 0.15, 0.1))
 #' myPCmat
+#' 
+#' @export PCAScoreMatrix
 PCAScoreMatrix <- function(scoreMatrix, expVar) {
   stopifnot(ncol(scoreMatrix)==length(expVar))
   attr(scoreMatrix, "expVar") <- expVar
@@ -22,35 +26,40 @@ PCAScoreMatrix <- function(scoreMatrix, expVar) {
   return(scoreMatrix)
 }
 
+
+
 #' Coerece a PCAScoreMatrix into score matrix
+#' 
 #' 
 #' @param x A \code{PCAScoreMatrix} S3 object
 #' @param ... Currently ignored
-#' 
 #' @return A numeric matrix, the score matrix
-#' 
 #' @examples
+#' 
 #' myPCmat <- PCAScoreMatrix(matrix(rnorm(15),ncol=3), c(0.25, 0.15, 0.1))
 #' as.matrix(myPCmat)
+#' 
 as.matrix.PCAScoreMatrix <- function(x, ...) {
   attr(x, "expVar") <- NULL
   class(x) <- "matrix"
   return(x)
 }
 
+
 #' Coerece a PCAScoreMatrix into data.frame
+#' 
 #' 
 #' @param x A \code{PCAScoreMatrix} S3 object.
 #' @param row.names See \code{as.data.frame}.
 #' @param optional See \code{as.data.frame}.
 #' @param ... See \code{as.data.frame}
-#' 
 #' @return A data.frame consisting of the score matrix
-#' 
 #' @seealso \code{\link{as.data.frame}}
 #' @examples
+#' 
 #' myPCmat <- PCAScoreMatrix(matrix(rnorm(15),ncol=3), c(0.25, 0.15, 0.1))
 #' as.matrix(myPCmat)
+#' 
 as.data.frame.PCAScoreMatrix <- function(x,
                                          row.names=NULL,
                                          optional=FALSE,
@@ -62,14 +71,16 @@ as.data.frame.PCAScoreMatrix <- function(x,
 
 
 #' Print PCAScoreMatrix
+#' 
+#' 
 #' @param x A \code{PCAScoreMatrix} S3-object
 #' @param ... Ignored
-#' 
 #' @return NULL, side effect is used
+#' @examples
 #' 
-#' @examples 
 #' myPCmat <- PCAScoreMatrix(matrix(rnorm(15),ncol=3), c(0.25, 0.15, 0.1))
 #' myPCmat
+#' 
 print.PCAScoreMatrix <- function(x, ...) {
   expVar <- attr(x, "expVar")
   cat(sprintf("PCAScoreMatrix with %d dimensions\n", length(expVar)))

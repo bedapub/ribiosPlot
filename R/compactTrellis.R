@@ -10,6 +10,22 @@
 #' @examples
 #' opts <- compactTrellis()
 
+
+
+#' Return a compact setting for lattice plots, useful for preparing
+#' publications
+#' 
+#' The function returns a set of lattice options that are useful for compact
+#' figures, with less room for padding and therefore more room for the figure.
+#' It is often used to prepare for publications.
+#' 
+#' 
+#' @return A list that can be used in \code{lattice.options}
+#' @examples
+#' 
+#' opts <- compactTrellis()
+#' 
+#' @export compactTrellis
 compactTrellis <- function() {
   op <- lattice::col.whitebg()
   op$layout.widths=list(left.padding=0,
@@ -35,6 +51,21 @@ compactTrellis <- function() {
 #'setCompactTrellis()
 #'}
 
+
+
+#' Set compact trellis as default
+#' 
+#' The function sets compact trellis options as default
+#' 
+#' 
+#' @return as \code{lattice.options}. The side-effect is used.
+#' @examples
+#' 
+#' \dontrun{
+#' setCompactTrellis()
+#' }
+#' 
+#' @export setCompactTrellis
 setCompactTrellis <- function() {
   lattice::lattice.options("default.theme"=compactTrellis())
 }
