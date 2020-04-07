@@ -66,6 +66,7 @@ qHist <- function(x,quantiles=0.25, breaks=100,
 #' 400
 #' }
 #' 
+#' @export
 qBreaks <- function(x,quantiles=c(0,0.99), breaks=100) {
   haltifnot(length(quantiles)==2 & quantiles[2]>quantiles[1],
             msg="quantiles must be a vector of two numbers with quantiles[2]>quantiles[1]")

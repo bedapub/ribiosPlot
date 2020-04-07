@@ -31,6 +31,7 @@
 expVar <- function(x, choices) UseMethod("expVar")
 
 #'@describeIn expVar Extract explained variance from a prcomp object
+#'@export
 expVar.prcomp <- function(x, choices) {
   vars <- x$sdev^2
   if(missing(choices) || is.null(choices) || (length(choices)==1 && is.na(choices)))
@@ -40,6 +41,7 @@ expVar.prcomp <- function(x, choices) {
 }
 
 #'@describeIn expVar Extract explained variance from a PCAScoreMatrix object
+#'@export
 expVar.PCAScoreMatrix <- function(x, choices) {
   ev <- attr(x, "expVar")
   if(missing(choices) || is.null(choices) || (length(choices)==1 && is.na(choices)))
@@ -73,6 +75,7 @@ expVarLabel <- function(x, choices, compact) UseMethod("expVarLabel")
 #' \code{NULL} or \code{NA} or missing, all elements are returned.
 #' @param compact Logical, either a \code{compact} label is returned, see
 #' examples.
+#' @export
 getExpVarLabel <- function(ev, choices, compact=FALSE) {
   if(missing(choices) || is.null(choices) || (length(choices)==1 && is.na(choices)))
     choices <- seq(along=ev)
@@ -104,7 +107,7 @@ getExpVarLabel <- function(ev, choices, compact=FALSE) {
 #' expVarLabel(pcaMat, choices=1:2)
 #' expVarLabel(pcaMat, choices=1:2, compact=TRUE)
 #' expVarLabel(pcaMat, choices=c(1,3), compact=TRUE)
-#' 
+#' @export
 expVarLabel.PCAScoreMatrix <- function(x, choices, compact=FALSE) {
   ev <- expVar(x, choices)
   
@@ -130,7 +133,7 @@ expVarLabel.PCAScoreMatrix <- function(x, choices, compact=FALSE) {
 #' expVarLabel(myPr)
 #' expVarLabel(myPr, choices=1:2)
 #' expVarLabel(myPr, choices=1:2, compact=TRUE)
-#' 
+#' @export
 expVarLabel.prcomp <- function(x, choices, 
                                compact=FALSE) {
   ev <- expVar(x, choices)

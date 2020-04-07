@@ -1,3 +1,33 @@
+#' @importFrom grDevices blues9 col2rgb colorRampPalette
+#' @importFrom grDevices dev.print gray palette pdf rgb xy.coords
+#' @importFrom methods is new show
+#' @importFrom utils assignInNamespace
+#' @importFrom ribiosUtils assertFile basefilename haltifnot
+#' @importFrom RColorBrewer brewer.pal brewer.pal.info 
+#' @importFrom grid grid.layout grid.text plotViewport pushViewport unit viewport gpar
+#' @importFrom lattice panel.xyplot
+#' @import ggplot2
+#' @import graphics
+#' @import stats
+NULL
+
+#' Whether an integer is odd (or even)
+#' @param x An integer.
+#' @return Logical, whether the input number is odd or even.
+#' 
+#' \code{isOdd} and \code{isEven} returns whether an integer is odd or even,
+#' respectively.
+#' @aliases isEven
+#' @examples 
+#' isOdd(3)
+#' isEven(4)
+#' @export
+isOdd <- function(x) x%%2 == 1
+
+#' @rdname isOdd
+#' @export
+isEven <- function(x) x%%2 == 0
+
 #' Compact par setting
 #' 
 #' For compact figures
@@ -43,14 +73,25 @@ squareLayout <- function(n) {
   return(c(nrow, ncol))
 }
 
-## symmetric range
+#' Return a symmetric range
+#' @param x A numeric vector
+#' @param mid Number, the mid point
+#' @return A vector of two numbers, a symmetric range with \code{mid} in the middle
+#' @export
 symrange <- function(x, mid=0) {
   xrange <- range(x[!is.infinite(x)], na.rm=TRUE)
   maxabs <- max(abs(xrange-mid))
   return(c(mid-maxabs, mid+maxabs))
 }
 
-## non null value
+#' Make sure that x is assigned a reasonable value
+#' @param x Any vector
+#' @param default A default value
+#' @param length Desired length
+#' @param defaultNULL.ok Logical, whether the default can be \code{NULL} or not
+#' 
+#' @return non-null values
+#' @export
 nonNull <- function(x, default, length=NULL, defaultNULL.ok=FALSE) {
   if(is.null(default) & !defaultNULL.ok)
     stop("'default' is not allowed to be NULL")
@@ -63,8 +104,6 @@ nonNull <- function(x, default, length=NULL, defaultNULL.ok=FALSE) {
     res <- rep(res, length.out=length)
   return(res)
 }
-
-
 
 #' Bound values
 #' 
@@ -105,6 +144,8 @@ nonNull <- function(x, default, length=NULL, defaultNULL.ok=FALSE) {
 #' @export bound
 bound <- function(x,low,high)  pmin(pmax(x, low),high)
 
+#' @rdname bound
+#' @export
 boundNorm <- function(x,
                       low = min(x, na.rm=TRUE),
                       high = max(x, na.rm=TRUE)) {
@@ -165,6 +206,8 @@ idev <- function(...) {
     dev.print(...)
 }
 
+#' @rdname idev
+#' @export
 ipdf <- function(file, ...) {
   if(interactive())
     dev.print(pdf, file=file, useDingbats=FALSE,...)
@@ -258,23 +301,7 @@ intRange <- function(x, na.rm=TRUE) {
 }
 
 
-#' get xlim/ylim ranges for plots from real values
-#'
-#' @param ... one or more vectors of real values
-#' @param perc percentage of dynamic range that should be covered by the limits; if set to 1 the whole range is used.
-#' @param symm logical value; if set to \code{TRUE}, the range will be symmetric around zero
-#'
-#' @examples
-#' myX <- rnorm(100, mean=1)
-#' myY <- rnorm(100)
-#' myLim <- getLims(myX, myY, perc=0.99)
-#' plot(myX, myY, xlim=myLim, ylim=myLim)
-#' mySymmLim <- getLims(myX, myY, perc=0.99, symm=TRUE)
-#' plot(myX, myY, xlim=myLim, ylim=mySymmLim)
-#'
-#' @export
-
-#' get xlim/ylim ranges for plots from real values
+#' Get xlim/ylim ranges for plots from real values
 #' 
 #' 
 #' @param ... one or more vectors of real values

@@ -44,6 +44,7 @@
 #' gridExtra::grid.arrange(grobs=list(panelA, panelB),
 #'  layout_matrix=layoutMat)
 #' 
+#' @export
 figurePanel <- function(gg, title) {
   titleg <- grid::textGrob(title, x=unit(0, "npc"), y=unit(1, "npc"), 
                           just=c("left", "top"),

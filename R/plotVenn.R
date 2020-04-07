@@ -17,26 +17,6 @@ replaceFunc <- function(funcName,
 }
 
 #' Plot Venn object of the Vennerable package
-#' @description
-#' The function plots Venn object of the Vennerable package in a way that better suits my eyes
-#'
-#' @param venn Venn object from the Vennerable package
-#' @param main Figure title
-#' @param show default options
-#' @param ... other parameters passed to plotVenn
-#' @return Side effect is used - a plot is generated
-#'
-#' @note The function is applicable to Vennerable package version 3.0.
-#' 
-#' @examples
-#' if(require("Vennerable")) {
-#'  myVenn <- list(A=LETTERS[1:24], B=LETTERS[3:8], C=LETTERS[5:9])
-#'  plotVenn(Venn(myVenn), main="Letters")
-#' }
-
-
-
-#' Plot Venn object of the Vennerable package
 #' 
 #' The function plots Venn object of the Vennerable package in a way that
 #' better suits my eyes

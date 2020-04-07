@@ -42,7 +42,6 @@ NULL
 
 #' Build fcol objects
 #' 
-#' 
 #' @name fcol-methods
 #' @aliases fcol-methods fcol,character,character-method
 #' @docType methods

@@ -6,6 +6,8 @@
 \title{Interative dev.print and pdf print}
 \usage{
 idev(...)
+
+ipdf(file, ...)
 }
 \arguments{
 \item{\dots}{Parameters passed to \code{\link{dev.print}}}

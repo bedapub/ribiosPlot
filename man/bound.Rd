@@ -6,6 +6,8 @@
 \title{Bound values}
 \usage{
 bound(x, low, high)
+
+boundNorm(x, low = min(x, na.rm = TRUE), high = max(x, na.rm = TRUE))
 }
 \arguments{
 \item{x}{A numeric vector or matrix}

@@ -39,6 +39,7 @@ PCAScoreMatrix <- function(scoreMatrix, expVar) {
 #' myPCmat <- PCAScoreMatrix(matrix(rnorm(15),ncol=3), c(0.25, 0.15, 0.1))
 #' as.matrix(myPCmat)
 #' 
+#' @export
 as.matrix.PCAScoreMatrix <- function(x, ...) {
   attr(x, "expVar") <- NULL
   class(x) <- "matrix"
@@ -60,6 +61,7 @@ as.matrix.PCAScoreMatrix <- function(x, ...) {
 #' myPCmat <- PCAScoreMatrix(matrix(rnorm(15),ncol=3), c(0.25, 0.15, 0.1))
 #' as.matrix(myPCmat)
 #' 
+#' @export
 as.data.frame.PCAScoreMatrix <- function(x,
                                          row.names=NULL,
                                          optional=FALSE,
@@ -81,6 +83,7 @@ as.data.frame.PCAScoreMatrix <- function(x,
 #' myPCmat <- PCAScoreMatrix(matrix(rnorm(15),ncol=3), c(0.25, 0.15, 0.1))
 #' myPCmat
 #' 
+#' @export
 print.PCAScoreMatrix <- function(x, ...) {
   expVar <- attr(x, "expVar")
   cat(sprintf("PCAScoreMatrix with %d dimensions\n", length(expVar)))

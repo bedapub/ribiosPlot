@@ -20,28 +20,78 @@
 \alias{heat}
 \alias{magentayellow}
 \alias{yellowmagenta}
-\alias{threecolor.panels}
-\alias{display.threecolor.panels}
-\title{Three-color panels}
+\alias{blackyellow}
+\alias{yellowblack}
+\alias{whiteblue}
+\alias{whitered}
+\alias{blackred}
+\alias{blackgreen}
+\alias{whiteblack}
+\alias{blackwhite}
+\title{Two and three-color panels}
 \usage{
 royalbluered(n)
+
+royalredblue(n)
+
+royalbluegrayred(n)
+
+royalredgrayblue(n)
+
+blackyellow(n)
+
+yellowblack(n)
+
+whiteblue(n)
+
+whitered(n)
+
+blackred(n)
+
+blackgreen(n)
+
+whiteblack(n)
+
+blackwhite(n)
+
+turyeb(n)
+
+redgreen(n)
+
+greenred(n)
+
+bluered(n)
+
+redblue(n)
+
+blueblackred(n)
+
+cyanblackyellow(n)
+
+yellowblackcyan(n)
+
+redblackblue(n)
+
+blackredyellow(n)
+
+blackgoldred(n)
+
+magentayellow(n)
+
+yellowmagenta(n)
+
+whiteblueblackheat(n)
+
+heat(n)
 }
 \arguments{
 \item{n}{Number of colors needed}
-
-\item{nc}{Number of color columns}
 }
 \value{
 Character vector of length \code{n} coding colors
 }
 \description{
-Precompiled three-color panels for visualization purposes
-}
-\details{
-\code{threecolor.panels} returns all available three-color panels.
-\code{display.threecolor.panels} display available three-color panels.
-
-For the rest see function definitions
+Two and three-color panels
 }
 \examples{
 
@@ -50,7 +100,4 @@ display.threecolor.panels()
 }
 \seealso{
 \code{\link{blackyellow}} for two-color systems
-}
-\author{
-Jitao David Zhang
 }

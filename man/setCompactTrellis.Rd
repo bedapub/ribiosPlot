@@ -8,21 +8,11 @@ setCompactTrellis()
 }
 \value{
 as \code{lattice.options}. The side-effect is used.
-
-as \code{lattice.options}. The side-effect is used.
 }
 \description{
 The function sets compact trellis options as default
 }
 \examples{
-\dontrun{
-setCompactTrellis()
-}
-Set compact trellis as default
-
-The function sets compact trellis options as default
-
-
 
 \dontrun{
 setCompactTrellis()

@@ -29,5 +29,4 @@ myPr <- prcomp(matrix(rnorm(100), ncol=5))
 expVarLabel(myPr)
 expVarLabel(myPr, choices=1:2)
 expVarLabel(myPr, choices=1:2, compact=TRUE)
-
 }

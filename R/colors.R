@@ -1,6 +1,5 @@
 ## colorpanel function was created in the gplots package (CRAN)
 ## using with the GPL-2 license
-isOdd <- function(x) x%%2 == 1
 
 #' Generates a set of colors that varies smoothly.
 #' 
@@ -94,10 +93,6 @@ colorpanel <- function (n, low, mid, high) {
     }
     rgb(red, blue, green)
 }
-
-## colors for factors
-## fbrewer returns a vector of colors matching a factor, and its base colors
-
 
 #' Factor color brewer
 #' 
@@ -231,32 +226,20 @@ brewer.pal.factor <- function(factor, name="Greys") {
   return(colbase[factor])
 }
 
-## colors
-
-
-
 ##-------------------- three-color (or more) systems --------------------##
 
 RIBIOS_BLUEREDS <- c("#2166AC", "#D1E5F0", "white", "#FDDBC7", "#B2182B")
 
 
-#' Three-color panels
-#' 
-#' Precompiled three-color panels for visualization purposes
-#' 
-#' \code{threecolor.panels} returns all available three-color panels.
-#' \code{display.threecolor.panels} display available three-color panels.
-#' 
-#' For the rest see function definitions
+#' Two and three-color panels
 #' 
 #' @aliases royalbluered royalredblue royalbluegrayred royalredgrayblue turyeb
 #' redgreen greenred bluered redblue redblackblue cyanblackyellow
 #' yellowblackcyan blueblackred blackredyellow blackgoldred whiteblueblackheat
-#' heat magentayellow yellowmagenta threecolor.panels display.threecolor.panels
+#' heat magentayellow yellowmagenta blackyellow yellowblack
+#' whiteblue whitered blackred blackgreen whiteblack blackwhite
 #' @param n Number of colors needed
-#' @param nc Number of color columns
 #' @return Character vector of length \code{n} coding colors
-#' @author Jitao David Zhang
 #' @seealso \code{\link{blackyellow}} for two-color systems
 #' @examples
 #' 
@@ -265,86 +248,141 @@ RIBIOS_BLUEREDS <- c("#2166AC", "#D1E5F0", "white", "#FDDBC7", "#B2182B")
 #' @export royalbluered
 royalbluered <- function(n) colorRampPalette(RIBIOS_BLUEREDS,
                                              space="Lab")(n)
+
+#' @rdname royalbluered
+#' @export 
 royalredblue <- function(n) colorRampPalette(rev(RIBIOS_BLUEREDS),
                                              space="Lab")(n)
 
 RIBIOS_BLUEGRAYREDS <- c("#2166AC", "gray", "#B2182B")
 
+#' @rdname royalbluered
+#' @export 
 royalbluegrayred <- function(n) colorRampPalette(RIBIOS_BLUEGRAYREDS,
                                                  space="Lab")(n)
+
+#' @rdname royalbluered
+#' @export 
 royalredgrayblue <- function(n) colorRampPalette(rev(RIBIOS_BLUEGRAYREDS),
                                                  space="Lab")(n)
 
+#' @rdname royalbluered
+#' @export 
+blackyellow <- function(n) colorpanel(n, "black", "yellow")
+
+#' @rdname royalbluered
+#' @export 
+yellowblack <- function(n) colorpanel(n, "yellow", "black")
+
+RIBIOS_WHITEBLUES <- c("#F7F7F7", "#D1E5F0", "#92C5DE", "#4393C3")
+#' @rdname royalbluered
+#' @export 
+whiteblue <- function(n) colorRampPalette(RIBIOS_WHITEBLUES,
+                                          space="Lab")(n)
+
+RIBIOS_WHITEREDS <- c("#F7F7F7", "#FDDBC7", "#F4A582", "#D6604D")
+#' @rdname royalbluered
+#' @export 
+whitered <- function(n) colorRampPalette(RIBIOS_WHITEREDS,
+                                         space="Lab")(n)
+
+#' @rdname royalbluered
+#' @export 
+blackred <- function(n) colorpanel(n, "black", "red")
+
+#' @rdname royalbluered
+#' @export 
+blackgreen <- function(n) colorpanel(n, "black", "green")
+
+#' @rdname royalbluered
+#' @export 
+whiteblack <- function(n) rev(blackwhite(n))
+#' @rdname royalbluered
+#' @export 
+blackwhite <- function(n) gray(seq(0, 1, 1/(n-1)))
+
+
+##-------------------- l3 color systems --------------------##
+
+#' @rdname royalbluered
+#' @export 
 turyeb <- function(n) colorpanel(n, "turquoise1", "yellow", "black")
 
 ## following functions were created in the gplots package (CRAN):
 ## redgreen, bluered, greenred, redblue
 ## using with the GPL-2 license
+#' @rdname royalbluered
+#' @export 
 redgreen <- function(n) colorpanel(n, "red", "black", "green")
+
+#' @rdname royalbluered
+#' @export 
 greenred <- function(n) colorpanel(n, "green", "black", "red")
+
+#' @rdname royalbluered
+#' @export 
 bluered <- function(n) colorpanel(n, "blue", "white", "red")
+
+#' @rdname royalbluered
+#' @export 
 redblue <- function(n) colorpanel(n, "red", "white", "blue")
+
+#' @rdname royalbluered
+#' @export 
 blueblackred <- function(n) colorpanel(n, "blue", "black", "red")
+
+#' @rdname royalbluered
+#' @export 
 cyanblackyellow <- function(n) colorpanel(n, "#9BD0EC", "black", "#FCF6C3")
+
+#' @rdname royalbluered
+#' @export 
 yellowblackcyan <- function(n) colorpanel(n, "#FCF6C3", "black", "#9BD0EC")
+
+#' @rdname royalbluered
+#' @export 
 redblackblue <- function(n) colorpanel(n, "red", "black", "blue")
+
+#' @rdname royalbluered
+#' @export 
 blackredyellow <- function(n) colorRampPalette(c("black", "darkred", "red2", "goldenrod1", "yellow"),
                                                space="Lab")(n)
+
+#' @rdname royalbluered
+#' @export 
 blackgoldred <- function(n) colorpanel(n, "black", "goldenrod1", "red2")
+
+#' @rdname royalbluered
+#' @export 
 magentayellow <- function(n) colorRampPalette(c("magenta2", "black", "yellow"), space="Lab")(n)
+
+#' @rdname royalbluered
+#' @export 
 yellowmagenta <- function(n) colorRampPalette(c("yellow", "black", "magenta2"), space="Lab")(n)
 
-##-------------------- l3 color systems --------------------##
+
+#' @rdname royalbluered
+#' @export 
 whiteblueblackheat <- function(n) colorRampPalette(c("white", "blue", "blue3", "black", "red3", "red", "yellow"))(n)
+
+#' @rdname royalbluered
+#' @export 
 heat <- function(n)  colorRampPalette(c("transparent", blues9, "black", "red3", "red", "yellow"))(n)
 
-##-------------------- two-color systems --------------------##
-
-
-#' Two-color panels
-#' 
-#' Precompiled two-color panels for visualization purposes
-#' 
-#' \code{twocolor.panels} returns all available two-color panels.
-#' \code{display.twocolor.panels} display available two-color panels.
-#' 
-#' For the rest see function definitions.
-#' 
-#' @aliases blackyellow yellowblack whiteblue whitered blackred blackgreen
-#' whiteblack blackwhite twocolor.panels display.twocolor.panels
-#' @param n Number of colors needed
-#' @param nc Number of color columns
-#' @return Character vector of length \code{n} coding colors
-#' @author Jitao David Zhang
-#' @seealso \code{\link{royalbluered}} for three-color systems
-#' @examples
-#' 
-#' display.twocolor.panels()
-#' 
-#' @export blackyellow
-blackyellow <- function(n) colorpanel(n, "black", "yellow")
-yellowblack <- function(n) colorpanel(n, "yellow", "black")
-
-RIBIOS_WHITEBLUES <- c("#F7F7F7", "#D1E5F0", "#92C5DE", "#4393C3")
-whiteblue <- function(n) colorRampPalette(RIBIOS_WHITEBLUES,
-                                          space="Lab")(n)
-
-RIBIOS_WHITEREDS <- c("#F7F7F7", "#FDDBC7", "#F4A582", "#D6604D")
-whitered <- function(n) colorRampPalette(RIBIOS_WHITEREDS,
-                                         space="Lab")(n)
-
-blackred <- function(n) colorpanel(n, "black", "red")
-blackgreen <- function(n) colorpanel(n, "black", "green")
-
-whiteblack <- function(n) rev(blackwhite(n))
-blackwhite <- function(n) gray(seq(0, 1, 1/(n-1)))
 
 ##-------------------- Display functions --------------------##
+#' Return available three-color panels
+#' @return A vector of character strings
+#' @export twocolor.panels
 twocolor.panels <- function() {
   return(c("blackyellow", "yellowblack",
            "whiteblue", "whitered",
            "blackred", "blackgreen", "whiteblack", "blackwhite"))
 }
+
+#' Return available three-color panels
+#' @return A vector of character strings
+#' @export
 threecolor.panels <- function() {
   return(c("royalbluered", "royalredblue",
            "royalbluegrayred","royalredgrayblue",
@@ -359,7 +397,15 @@ threecolor.panels <- function() {
            "whiteblueblackheat", "heat"))
 }
 
-
+#' Display color panels
+#' 
+#' @param panel.names A vector of character strings, panels to be visualized
+#' @param nc Number of color columns
+#' @return Side effect (visuzalization is used)
+#' @author Jitao David Zhang
+#' @examples
+#' display.colorpanels(threecolor.panels(), 6)
+#' @export
 display.colorpanels <- function(panel.names, nc) {
   nc <- as.integer(pmax(pmin(nc, 100), 3))
   np=length(panel.names)
@@ -372,12 +418,28 @@ display.colorpanels <- function(panel.names, nc) {
     rect(xleft=0:(nc-1), ybottom=i-1, xright=1:nc, ytop=i-0.2,col=curcols, border="lightgray")
     text(rep(-0.1, np), (1:np)-0.6, labels=panel.names, xpd=TRUE, adj=1)
   }
+  return(invisible(NULL))
 }
 
+#' Display two-color panels
+#' @param nc Number of columns
+#' @return Side effect is used
+#' @examples
+#' 
+#' display.twocolor.panels()
+#' @export
 display.twocolor.panels <- function (nc=20) {
   display.colorpanels(twocolor.panels(), nc)
 }
 
+#' Display three-color panels
+#' @param nc Number of columns
+#' @return Side effect is used
+#' 
+#' @examples
+#' 
+#' display.threecolor.panels()
+#' @export
 display.threecolor.panels <- function (nc=20) {
   display.colorpanels(threecolor.panels(), nc)
 }

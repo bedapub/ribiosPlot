@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{getLims}
 \alias{getLims}
-\title{get xlim/ylim ranges for plots from real values}
+\title{Get xlim/ylim ranges for plots from real values}
 \usage{
 getLims(..., perc = 0.99, symm = TRUE)
 }
@@ -16,16 +16,9 @@ limits; if set to 1 the whole range is used.}
 symmetric around zero}
 }
 \description{
-get xlim/ylim ranges for plots from real values
+Get xlim/ylim ranges for plots from real values
 }
 \examples{
-myX <- rnorm(100, mean=1)
-myY <- rnorm(100)
-myLim <- getLims(myX, myY, perc=0.99)
-plot(myX, myY, xlim=myLim, ylim=myLim)
-mySymmLim <- getLims(myX, myY, perc=0.99, symm=TRUE)
-plot(myX, myY, xlim=myLim, ylim=mySymmLim)
-
 
 myX <- rnorm(100, mean=1)
 myY <- rnorm(100)

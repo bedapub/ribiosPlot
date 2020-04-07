@@ -23,19 +23,6 @@ indicating whether the sign of values in the 1st/2nd axis should be reversed}
 Retrieve PCA scores from prcomp objects
 }
 \examples{
-testMatrix <- matrix(rnorm(1000), nrow=10)
-testPCA <- prcomp(testMatrix)
-testPCAscores <- pcaScores(testPCA)
-
-testPCAscores.withOffset <- pcaScores(testPCA, offset=c(1,3,5))
-## notice the average of offset-rows are near zero
-colMeans(as.matrix(testPCAscores.withOffset)[c(1,3,5),])
-
-testPCAscores.withReverse <- pcaScores(testPCA, reverse=c(TRUE, FALSE))
-colMeans(as.matrix(testPCAscores.withReverse)[c(1,3,5),])
-Retrieve PCA scores from prcomp objects
-
-
 
 testMatrix <- matrix(rnorm(1000), nrow=10)
 testPCA <- prcomp(testMatrix)

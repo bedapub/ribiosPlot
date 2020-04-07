@@ -1,7 +1,9 @@
 ##---------##
 ## generics
 ##---------##
+#' @exportMethod fcol
 setGeneric("fcol", function(object, base) standardGeneric("fcol"))
+#' @exportMethod fcbase
 setGeneric("fcbase", function(object) standardGeneric("fcbase"))
 
 ##---------##

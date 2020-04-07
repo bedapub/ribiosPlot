@@ -1,22 +1,3 @@
-## PCA plot for samples of expression data
-#' Retrieve PCA scores from prcomp objects
-#'
-#' @param x An object of prcomp
-#' @param choices Integer vector, indices of principal components, default the first two PCs. If missing, \code{NULL} or \code{NA}, all PCs are returned.
-#' @param offset Oither one or more rows's names in the loading matrix, or indices, or a logical vector. The average loading of the rows specified by offset is set to zero.
-#' @param reverse Logical of length 2 or 1 (which will be repeated to 2), indicating whether the sign of values in the 1st/2nd axis should be reversed
-#' @examples
-#' testMatrix <- matrix(rnorm(1000), nrow=10)
-#' testPCA <- prcomp(testMatrix)
-#' testPCAscores <- pcaScores(testPCA)
-#'
-#' testPCAscores.withOffset <- pcaScores(testPCA, offset=c(1,3,5))
-#' ## notice the average of offset-rows are near zero
-#' colMeans(as.matrix(testPCAscores.withOffset)[c(1,3,5),])
-#' 
-#' testPCAscores.withReverse <- pcaScores(testPCA, reverse=c(TRUE, FALSE))
-#' colMeans(as.matrix(testPCAscores.withReverse)[c(1,3,5),])
-
 #' Retrieve PCA scores from prcomp objects
 #' 
 #' 
@@ -167,6 +148,7 @@ plotPCA <- function(x, choices, ...) UseMethod("plotPCA")
 #' plotPCA(testPCA, choices=c(1,2), grid=TRUE, points=pointsList, text=textList)
 #' plotPCA(testPCA, choices=c(2,3), grid=TRUE, points=pointsList, text=textList)
 #' 
+#' @export
 plotPCA.prcomp <- function(x,
                            choices=c(1,2),
                            text=FALSE,
@@ -349,6 +331,15 @@ plotPCA.prcomp <- function(x,
     return(invisible(as.data.frame(scoreMat)))
 }
 
+#' Plot PCA loading
+#' @param loadings PCA loadings
+#' @param x Integer, which loading is to be visualized on the X axis?
+#' @param y Integer, the loading to be visualized on the X axis.
+#' @param circle Logical, whether draw circle or not
+#' @param title Character string
+#' @param subtitle Character string
+#' @param ... Passed to \code{\link{plot}}
+#' @export
 plotPCAloading <- function(loadings, x=1L, y=2L, circle=FALSE, title="", subtitle="",...) {
   plot(loadings[,x],loadings[,y],
        xlim=c(-1,1),ylim=c(-1,1),
@@ -412,10 +403,6 @@ plotPCAscores <- function(scores, class, legendX, legendY, title="",...) {
 #' Perform principal component analysis and derive PCA scores from a logFC
 #' matrix
 #' 
-#' Perform principal component analysis and derive PCA scores from a logFC
-#' matrix
-#' 
-#' 
 #' @param lfcMat Log fold-chnage matrix, genes (features) in rows and samples
 #' in columns
 #' @param reference The reference value that should be set as 0 in the scores,
@@ -431,6 +418,7 @@ plotPCAscores <- function(scores, class, legendX, legendY, title="",...) {
 #' lfcMat <- matrix(rnorm(9), nrow=3)
 #' pcaScoresFromLogFC(lfcMat)
 #' 
+#' @export
 pcaScoresFromLogFC <- function(lfcMat,
                                reference=0,
                                choices, reverse=c(FALSE, FALSE)) {

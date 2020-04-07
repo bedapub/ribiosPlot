@@ -30,5 +30,4 @@ expVarLabel(pcaMat)
 expVarLabel(pcaMat, choices=1:2)
 expVarLabel(pcaMat, choices=1:2, compact=TRUE)
 expVarLabel(pcaMat, choices=c(1,3), compact=TRUE)
-
 }

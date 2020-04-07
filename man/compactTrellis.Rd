@@ -2,30 +2,20 @@
 % Please edit documentation in R/compactTrellis.R
 \name{compactTrellis}
 \alias{compactTrellis}
-\title{Return a compact setting for lattice plots, useful for preparing publications}
+\title{Return a compact setting for lattice plots, useful for preparing
+publications}
 \usage{
 compactTrellis()
 }
 \value{
 A list that can be used in \code{lattice.options}
-
-A list that can be used in \code{lattice.options}
 }
 \description{
-The function returns a set of lattice options that are useful for compact figures,
-with less room for padding and therefore more room for the figure. It is often used
-to prepare for publications.
-}
-\examples{
-opts <- compactTrellis()
-Return a compact setting for lattice plots, useful for preparing
-publications
-
 The function returns a set of lattice options that are useful for compact
 figures, with less room for padding and therefore more room for the figure.
 It is often used to prepare for publications.
-
-
+}
+\examples{
 
 opts <- compactTrellis()
 
