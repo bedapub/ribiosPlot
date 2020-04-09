@@ -1,8 +1,8 @@
 Package: ribiosPlot
 Type: Package
 Title: Plotting module of ribios for visualization
-Version: 1.2-6
-Date: 2020-04-06
+Version: 1.2-7
+Date: 2020-04-09
 Authors@R: 
   person(given = "Jitao David",
          family = "Zhang",
@@ -48,6 +48,7 @@ Collate:
     expVar.R
     pcaPlots.R
     plotVenn.R
+    pairs.R
     figurePanel.R
     ggSmoothScatter.R
     ribiosPlot-package.R

@@ -3,3 +3,6 @@ doc
 *~
 inst/doc
 .Rproj.user
+.Rhistory
+.RDatat
+*.swp
