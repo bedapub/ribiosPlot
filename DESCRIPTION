@@ -1,8 +1,8 @@
 Package: ribiosPlot
 Type: Package
 Title: Plotting module of ribios for visualization
-Version: 1.2-7
-Date: 2020-04-09
+Version: 1.2-8
+Date: 2020-04-10
 Authors@R: 
   person(given = "Jitao David",
          family = "Zhang",
@@ -35,6 +35,7 @@ Collate:
     AllClasses.R
     AllMethods.R
     utils.R
+    ribiosPlot-package.R
     robustdist.R
     p2asterisk.R
     ellipse.R
@@ -51,7 +52,7 @@ Collate:
     pairs.R
     figurePanel.R
     ggSmoothScatter.R
-    ribiosPlot-package.R
+    openFileDevice.R
 Enhances: Vennerable
 License: GPL-3
 LazyLoad: yes

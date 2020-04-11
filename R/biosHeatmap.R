@@ -193,6 +193,7 @@ guessWH <- function(nrow, ncol,
 #' @param \dots Other paramters passed to \code{heatmap.2} function
 #' @return See \code{heatmap.2} in the \code{gplots} package.
 #' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
+#' @importFrom ribiosUtils boundNorm
 #' @examples
 #' 
 #' set.seed(123)

@@ -52,6 +52,8 @@ NULL
 #' } }
 NULL
 
+#' @export
+ribiosUtils::boundNorm
 
-
-
+#' @export
+ribiosUtils::bound

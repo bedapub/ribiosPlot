@@ -58,6 +58,7 @@
 #' showpanel(royalbluered(64))
 #' showpanel(royalredblue(64))
 #' 
+#' @importFrom ribiosUtils isOdd
 #' @export colorpanel
 colorpanel <- function (n, low, mid, high) {
     if (missing(mid) || missing(high)) {
@@ -133,6 +134,7 @@ colorpanel <- function (n, low, mid, high) {
 #' ## boxplot uses colors matching to each level only
 #' boxplot(testRan ~ testFactor, col=fcbase(testCol1))
 #' 
+#' @importFrom ribiosUtils bound
 #' @export fcbrewer
 fcbrewer <- function(factor, panel="Set1") {
   if(!is.factor(factor)) factor <- factor(factor)
