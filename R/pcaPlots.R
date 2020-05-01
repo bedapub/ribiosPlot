@@ -7,8 +7,8 @@
 #' @param offset Oither one or more rows's names in the loading matrix, or
 #' indices, or a logical vector. The average loading of the rows specified by
 #' offset is set to zero.
-#' @param reverse Logical of length 2 or 1 (which will be repeated to 2),
-#' indicating whether the sign of values in the 1st/2nd axis should be reversed
+#' @param reverse Logical of the same length as \code{choices} or 1 (which will be repeated),
+#' indicating whether the sign of values in the indexed axis should be reversed
 #' @examples
 #' 
 #' testMatrix <- matrix(rnorm(1000), nrow=10)
@@ -25,7 +25,6 @@
 #' @export pcaScores
 pcaScores <- function(x, choices, offset, reverse=c(FALSE, FALSE)) {
   stopifnot(all(is.logical(reverse)) & length(reverse)<=2)
-  reverse <- rep(reverse, length.out=2)
   if(!is(x, "prcomp"))
     stop(sprintf("'%s' must be a prcomp object", deparse(substitute(x))))
   if (!length(scores <- x$x)) 
@@ -40,7 +39,9 @@ pcaScores <- function(x, choices, offset, reverse=c(FALSE, FALSE)) {
          ncol(scores), choices[1], choices[2])
   }
   if(!missing(offset)) {
-      if(!all(offset %in% rownames(x$x)) & !all(offset %in% 1:nrow(x$x)) & !(is.logical(offset) & length(offset)==nrow(x$x))) {
+      if(!all(offset %in% rownames(scores)) & 
+         !all(offset %in% 1:nrow(scores)) & 
+         !(is.logical(offset) & length(offset)==nrow(scores))) {
           stop("offset should be either one or more rows's names in x$x, or indices, or a logical vector" )
       }
   }
@@ -61,6 +62,73 @@ pcaScores <- function(x, choices, offset, reverse=c(FALSE, FALSE)) {
   }
   res <- PCAScoreMatrix(xx, expVar=expVar(x, choices))
   return(res)
+}
+
+#' Retrieve PCA rotations from prcomp objects
+#' 
+#' @param x An object of prcomp
+#' @param choices Integer vector, indices of principal components, default the
+#' first two PCs. If missing, \code{NULL} or \code{NA}, all PCs are returned.
+#' @param offset Oither one or more rows's names in the rotation matrix, or
+#' indices, or a logical vector. The average of the rows specified by
+#' offset is set to zero.
+#' @param reverse Logical of the same length as \code{choices} or 1 (which will be repeated),
+#' indicating whether the sign of values in the indexed axis should be reversed
+#' @examples
+#' 
+#' testMatrix <- matrix(rnorm(1000), nrow=10)
+#' testPCA <- prcomp(testMatrix)
+#' testPCAscores <- pcaScores(testPCA)
+#' 
+#' testPCAscores.withOffset <- pcaScores(testPCA, offset=c(1,3,5))
+#' ## notice the average of offset-rows are near zero
+#' colMeans(as.matrix(testPCAscores.withOffset)[c(1,3,5),])
+#' 
+#' testPCAscores.withReverse <- pcaScores(testPCA, reverse=c(TRUE, FALSE))
+#' colMeans(as.matrix(testPCAscores.withReverse)[c(1,3,5),])
+#' 
+#' @export pcaScores
+pcaRotation <- function(x, choices, offset, reverse=c(FALSE, FALSE)) {
+  stopifnot(all(is.logical(reverse)) & length(reverse)<=2)
+  reverse <- rep(reverse, length.out=2)
+  if(!is(x, "prcomp"))
+    stop(sprintf("'%s' must be a prcomp object", deparse(substitute(x))))
+  if (!length(rotation <- x$rotation)) 
+    stop(gettextf("object '%s' has no rotation", deparse(substitute(x))), 
+         domain = NA)
+  if (is.complex(x$scores)) 
+    stop("pcaRotations is not defined for complex PCA")
+  if(missing(choices) || is.null(choices) || (length(choices)==1 && is.na(choices))) {
+    choices <- 1:ncol(rotation)
+  } else if (max(choices)>ncol(rotation)) {
+    stop("Input PCA has %d dimensions, the choices (%d, %d) are out of boundary",
+         ncol(rotation), choices[1], choices[2])
+  }
+  if(!missing(offset)) {
+    if(!all(offset %in% rownames(rotation)) & 
+       !all(offset %in% 1:nrow(rotation)) & 
+       !(is.logical(offset) & length(offset)==nrow(rotation))) {
+      stop("offset should be either one or more rows's names in x$rotation, or indices, or a logical vector" )
+    }
+  }
+  
+  lam <- x$sdev[choices]
+  n <- NROW(x$x)
+  lam <- lam * sqrt(n)
+  xx <- t(t(rotation[, choices, drop=FALSE])*lam)
+  if(!missing(offset)) {
+    offsetMean <- colMeans(xx[offset,,drop=FALSE])
+    xxOffset <- matrix(rep(offsetMean, nrow(xx)), ncol=ncol(xx), byrow=T)
+    xx <- xx-xxOffset
+  }
+  reverse <- rep_len(reverse, length.out=length(choices))
+  for(i in seq(along=reverse)) {
+    if(reverse[i])
+      xx[,i] <- -xx[,i]
+  }
+  return(xx)
+  ## res <- PCAScoreMatrix(xx, expVar=expVar(x, choices))
+  ## return(res)
 }
 
 #' S3 method plotPCA
