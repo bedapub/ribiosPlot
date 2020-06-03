@@ -16,8 +16,8 @@ first two PCs. If missing, \code{NULL} or \code{NA}, all PCs are returned.}
 indices, or a logical vector. The average loading of the rows specified by
 offset is set to zero.}
 
-\item{reverse}{Logical of length 2 or 1 (which will be repeated to 2),
-indicating whether the sign of values in the 1st/2nd axis should be reversed}
+\item{reverse}{Logical of the same length as \code{choices} or 1 (which will be repeated),
+indicating whether the sign of values in the indexed axis should be reversed}
 }
 \description{
 Retrieve PCA scores from prcomp objects
