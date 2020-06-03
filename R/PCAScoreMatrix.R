@@ -46,6 +46,24 @@ as.matrix.PCAScoreMatrix <- function(x, ...) {
   return(x)
 }
 
+#' Subsetting PCAScoreMatrix while keeping the expVar attribute
+#' @param x A \code{PCAScoreMatrix} object
+#' @param i Integer or logical vector, subsetting rows
+#' @param j Integer or logical vector, subsetting columns
+#' @param ... Not used
+#' @param drop Logical, whether to drop dimensions if only one column is left
+#' @return A \code{PCAScoreMatrix} object
+#' @export
+`[.PCAScoreMatrix` <- function(x, i, j, ..., drop=TRUE) {
+  res <- as.matrix(x)[i,j,...,drop=drop]
+  if(missing(j)) {
+    attr(res, "expVar") <- attr(x, "expVar")
+  } else {
+    attr(res, "expVar") <- attr(x, "expVar")[j]
+  }
+  class(res) <- "PCAScoreMatrix"
+  return(res)
+}
 
 #' Coerece a PCAScoreMatrix into data.frame
 #' 
