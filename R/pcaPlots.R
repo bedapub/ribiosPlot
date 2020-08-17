@@ -495,10 +495,10 @@ pcaScoresFromLogFC <- function(lfcMat,
   scores <- ribiosPlot::pcaScores(diffPca, offset=1, choices=choices,
                                   reverse=reverse)
   res <- scores[-1,,drop=FALSE]
-  attr(res, "elfcMatpVar") <- attr(scores, "elfcMatpVar")
+  attr(res, "expVar") <- attr(scores, "expVar")
   rownames(res) <- rownames(scores)[-1]
   colnames(res) <- colnames(scores)
-  class(res) <- "PCAScoreMatrilfcMat"
+  class(res) <- "PCAScoreMatrix"
   return(res)
 }
 
