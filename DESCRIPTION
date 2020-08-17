@@ -1,15 +1,15 @@
 Package: ribiosPlot
 Type: Package
 Title: Plotting module of ribios for visualization
-Version: 1.2-9
-Date: 2020-06-03
-Authors@R: 
+Version: 1.2-10
+Date: 2020-08-17
+Authors@R:
   person(given = "Jitao David",
          family = "Zhang",
          role = c("aut", "cre", "ctb"),
          email = "jitao_david.zhang@roche.com",
          comment = c(ORCID="0000-0002-3085-0909"))
-Description: Provides data structures and functions for data transformation 
+Description: Provides data structures and functions for data transformation
     and visualization.
 Imports:
     lattice,
