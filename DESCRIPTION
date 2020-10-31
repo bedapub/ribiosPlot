@@ -1,8 +1,8 @@
 Package: ribiosPlot
 Type: Package
 Title: Plotting module of ribios for visualization
-Version: 1.2-10
-Date: 2020-08-17
+Version: 1.2-11
+Date: 2020-10-31
 Authors@R:
   person(given = "Jitao David",
          family = "Zhang",
@@ -16,7 +16,6 @@ Imports:
     grDevices,
     ribiosUtils(>= 1.0-41),
     RColorBrewer,
-    methods,
     grid,
     gridExtra,
     utils,
@@ -40,6 +39,7 @@ Collate:
     p2asterisk.R
     ellipse.R
     colors.R
+    fcol.R
     hist.R
     jitter.xyplot.R
     compactTrellis.R

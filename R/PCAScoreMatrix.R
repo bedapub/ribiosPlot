@@ -105,7 +105,7 @@ as.data.frame.PCAScoreMatrix <- function(x,
 print.PCAScoreMatrix <- function(x, ...) {
   expVar <- attr(x, "expVar")
   cat(sprintf("PCAScoreMatrix with %d dimensions\n", length(expVar)))
-  show(as.matrix(x))
+  print(as.matrix(x))
   cat("Explained variances:", paste(ribiosUtils::percentage(expVar), 
                                     collapse=","),
       sprintf("(%s in total)\n", ribiosUtils::percentage(sum(expVar))))

@@ -25,7 +25,7 @@
 #' @export pcaScores
 pcaScores <- function(x, choices, offset, reverse=c(FALSE, FALSE)) {
   stopifnot(all(is.logical(reverse)) & length(reverse)<=2)
-  if(!is(x, "prcomp"))
+  if(!"prcomp" %in% class(x))
     stop(sprintf("'%s' must be a prcomp object", deparse(substitute(x))))
   if (!length(scores <- x$x)) 
     stop(gettextf("object '%s' has no scores", deparse(substitute(x))), 
@@ -91,7 +91,7 @@ pcaScores <- function(x, choices, offset, reverse=c(FALSE, FALSE)) {
 pcaRotation <- function(x, choices, offset, reverse=c(FALSE, FALSE)) {
   stopifnot(all(is.logical(reverse)) & length(reverse)<=2)
   reverse <- rep(reverse, length.out=2)
-  if(!is(x, "prcomp"))
+  if(!"prcomp" %in% class(x))
     stop(sprintf("'%s' must be a prcomp object", deparse(substitute(x))))
   if (!length(rotation <- x$rotation)) 
     stop(gettextf("object '%s' has no rotation", deparse(substitute(x))), 

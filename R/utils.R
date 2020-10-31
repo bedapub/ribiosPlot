@@ -1,6 +1,5 @@
 #' @importFrom grDevices blues9 col2rgb colorRampPalette
 #' @importFrom grDevices dev.print gray palette pdf rgb xy.coords
-#' @importFrom methods is new show
 #' @importFrom utils assignInNamespace
 #' @importFrom ribiosUtils assertFile basefilename haltifnot
 #' @importFrom RColorBrewer brewer.pal brewer.pal.info 
