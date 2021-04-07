@@ -59,3 +59,6 @@ LazyLoad: yes
 Encoding: UTF-8
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
+Remotes:
+    github::bedapub/ribiosUtils,
+    github::bedapub/ribiosArg
