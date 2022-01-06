@@ -53,11 +53,12 @@ Collate:
     figurePanel.R
     ggSmoothScatter.R
     openFileDevice.R
+    vennMembers.R
 Enhances: Vennerable
 License: GPL-3
 LazyLoad: yes
 Encoding: UTF-8
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 VignetteBuilder: knitr
 Remotes:
     github::bedapub/ribiosUtils,
