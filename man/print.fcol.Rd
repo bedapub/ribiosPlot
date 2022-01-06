@@ -8,6 +8,8 @@
 }
 \arguments{
 \item{x}{A fcol object, likely constructed by \code{\link{fcol}}}
+
+\item{...}{Not used now}
 }
 \description{
 Print a fcol object

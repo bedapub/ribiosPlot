@@ -28,6 +28,7 @@ fcbase <- function(fcol) {
 
 #' Print a fcol object
 #' @param x A fcol object, likely constructed by \code{\link{fcol}}
+#' @param ... Not used now
 #' @examples
 #' fc <- fcol(c("lightblue", "orange", "lightblue"), base=c("orange", "lightblue"))
 #' fc
