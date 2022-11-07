@@ -20,6 +20,6 @@ if(requireNamespace("Vennerable")) {
   myList <- list(A=LETTERS[1:5], B=LETTERS[2:7], C=LETTERS[seq(2,9,2)])
   myVenn <- Vennerable::Venn(myList)
   myVennDf <- vennMembersDataframe(myVenn)
-  prit(myVennDf)
+  print(myVennDf)
 }
 }
