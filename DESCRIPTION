@@ -1,8 +1,8 @@
 Package: ribiosPlot
 Type: Package
 Title: Plotting module of ribios for visualization
-Version: 1.2-12
-Date: 2021-01-06
+Version: 1.2-13
+Date: 2023-08-31
 Authors@R: 
   person(given = "Jitao David",
          family = "Zhang",

@@ -468,14 +468,14 @@ biosHeatmap <- function (x,
     lwid <- c(keysize, 6)
   if (missing(lmat) || is.null(lmat)) {
     lmat <- rbind(4:3, 2:1)
-    if (!missing(ColSideColors) && !is.null(ColSideColors) && !is.na(ColSideColors)) {
+    if (!missing(ColSideColors) && !is.null(ColSideColors) && !all(is.na(ColSideColors))) {
       if (!is.character(ColSideColors) || length(ColSideColors) %% nc != 0) 
         stop("'ColSideColors' must be a character vector of length ncol(x)")
       lmat <- rbind(lmat[1, ] + 1, c(NA, 1), lmat[2, ] + 
                     1)
       lhei <- c(lhei[1], 0.2, lhei[2])
     }
-    if (!missing(RowSideColors) && !is.null(RowSideColors) && !is.na(RowSideColors)) {
+    if (!missing(RowSideColors) && !is.null(RowSideColors) && !all(is.na(RowSideColors))) {
       if (!is.character(RowSideColors) || length(RowSideColors) %% nr != 0) 
         stop("'RowSideColors' must be a character vector of length nrow(x)")
       lmat <- cbind(lmat[, 1] + 1, c(rep(NA, nrow(lmat) - 
