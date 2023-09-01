@@ -28,11 +28,11 @@ PCAScoreMatrix objects
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{prcomp}: Extract explained variance from a prcomp object
+\item \code{expVar(prcomp)}: Extract explained variance from a prcomp object
 
-\item \code{PCAScoreMatrix}: Extract explained variance from a PCAScoreMatrix object
+\item \code{expVar(PCAScoreMatrix)}: Extract explained variance from a PCAScoreMatrix object
+
 }}
-
 \section{Methods (by class)}{
  \itemize{ \item \code{prcomp}: Extract
 explained variance from a prcomp object

@@ -58,7 +58,7 @@ Enhances: Vennerable
 License: GPL-3
 LazyLoad: yes
 Encoding: UTF-8
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 Remotes:
     github::bedapub/ribiosUtils,
