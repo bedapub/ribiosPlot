@@ -10,6 +10,14 @@ The package provides data structures and functions to plot graphics in the
 ribios software suite It is a collection of code snippets I used to generate
 plots to visualize omics data.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/bedapub/ribiosPlot}
+  \item Report bugs at \url{https://github.com/bedapub/ribiosPlot/issues}
+}
+
+}
 \author{
 Jitao David Zhang <jitao_david.zhang@roche.com>
 }

@@ -7,3 +7,13 @@
 ^Makefile$
 ^coverage\.txt$
 ^coverage\.r$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
+^\.gitlab-ci\.yml$
+^\.claude$
+^CLAUDE\.md$
+^cran-comments\.md$
+^bin$
+^CRAN-SUBMISSION$

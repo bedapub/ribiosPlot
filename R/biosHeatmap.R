@@ -456,7 +456,7 @@ biosHeatmap <- function (x,
   }
   nbr <- length(breaks)
   ncol <- length(breaks) - 1
-  if (class(col) == "function") 
+  if (is.function(col))
     col <- col(ncol)
   min.breaks <- min(breaks)
   max.breaks <- max(breaks)
