@@ -23,6 +23,7 @@ Imports:
     gridExtra,
     utils,
     graphics,
+    ribiosUtils,
     stats,
     ggplot2
 Suggests:
