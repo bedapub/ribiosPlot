@@ -18,7 +18,6 @@ Depends:
 Imports:
     lattice,
     grDevices,
-    ribiosUtils,
     RColorBrewer,
     grid,
     gridExtra,
@@ -68,3 +67,4 @@ Encoding: UTF-8
 RoxygenNote: 7.3.3
 VignetteBuilder: knitr
 Remotes: github::bedapub/ribiosUtils
+Remotes: github::bedapub/ribiosArg
