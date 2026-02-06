@@ -8,17 +8,21 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 2 notes
+0 errors | 0 warnings | 3 notes
 
 ### Notes explanation
 
-1. **Unavailable namespace imported from by a ':::' call: 'Vennerable'**
+1. **Suggests or Enhances not in mainstream repositories: ribiosArg, Vennerable**
+   - ribiosArg will be submitted to CRAN after ribiosUtils is accepted
+   - Vennerable is not on CRAN (maintained on GitHub)
+
+2. **Unavailable namespace imported from by a ':::' call: 'Vennerable'**
    The package enhances Vennerable (not on CRAN) with a modified Venn diagram
    plotting function. This functionality is optional and protected by
    `if(require("Vennerable"))`. Users who don't have Vennerable installed
    will simply not have access to this single function.
 
-2. **Possibly unsafe calls: unlockBinding, assignInNamespace**
+3. **Possibly unsafe calls: unlockBinding, assignInNamespace**
    These calls are used solely within the optional `plotVenn()` function to
    patch a layout issue in the Vennerable package. The function is only
    called when Vennerable is available and the user explicitly requests
