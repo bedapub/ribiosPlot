@@ -1,6 +1,8 @@
 *ribiosPlot*: Data transformation and visualisation
 ===
 
+![R-CMD-check badge](https://github.com/bedapub/ribiosPlot/workflows/R-CMD-check/badge.svg)
+
 ## What is *ribiosPlot*?
 
 *ribiosPlot* is a R package in the *ribios* suite that assists data transformation and visualization.
