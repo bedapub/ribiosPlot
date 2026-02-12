@@ -1,9 +1,8 @@
 #' @importFrom grDevices blues9 col2rgb colorRampPalette
 #' @importFrom grDevices dev.print gray palette pdf rgb xy.coords
-#' @importFrom utils assignInNamespace
 #' @importFrom ribiosUtils assertFile basefilename haltifnot
 #' @importFrom RColorBrewer brewer.pal brewer.pal.info 
-#' @importFrom grid grid.layout grid.text plotViewport pushViewport unit viewport gpar
+#' @importFrom grid grid.newpage grid.text unit gpar
 #' @importFrom lattice panel.xyplot
 #' @import ggplot2
 #' @import graphics

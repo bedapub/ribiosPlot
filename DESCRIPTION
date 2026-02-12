@@ -21,7 +21,6 @@ Imports:
     RColorBrewer,
     grid,
     gridExtra,
-    utils,
     graphics,
     ribiosUtils,
     stats,
@@ -67,3 +66,4 @@ LazyLoad: yes
 Encoding: UTF-8
 RoxygenNote: 7.3.3
 VignetteBuilder: knitr
+Additional_repositories: https://bedapub.r-universe.dev

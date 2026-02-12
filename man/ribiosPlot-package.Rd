@@ -2,13 +2,11 @@
 % Please edit documentation in R/ribiosPlot-package.R
 \docType{package}
 \name{ribiosPlot-package}
-\alias{ribiosPlot-package}
 \alias{ribiosPlot}
-\title{ribiosPlot: Data transformation and visualization in ribios}
+\alias{ribiosPlot-package}
+\title{ribiosPlot: Plotting Module of Ribios for Visualization}
 \description{
-The package provides data structures and functions to plot graphics in the
-ribios software suite It is a collection of code snippets I used to generate
-plots to visualize omics data.
+Provides data structures and functions for data transformation and visualization in computational biology. Includes heatmaps, color schemes, PCA plots, and various plotting utilities for drug discovery.
 }
 \seealso{
 Useful links:
@@ -19,6 +17,12 @@ Useful links:
 
 }
 \author{
-Jitao David Zhang <jitao_david.zhang@roche.com>
+\strong{Maintainer}: Jitao David Zhang \email{jitao_david.zhang@roche.com} (\href{https://orcid.org/0000-0002-3085-0909}{ORCID}) [contributor]
+
+Other contributors:
+\itemize{
+  \item F.Hoffmann-La Roche AG [copyright holder]
 }
-\keyword{package}
+
+}
+\keyword{internal}

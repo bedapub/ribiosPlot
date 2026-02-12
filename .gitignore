@@ -6,3 +6,5 @@ inst/doc
 .Rhistory
 .RDatat
 *.swp
+*.Rcheck
+*.tar.gz
