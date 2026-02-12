@@ -4,9 +4,9 @@
 \name{ribiosPlot-package}
 \alias{ribiosPlot}
 \alias{ribiosPlot-package}
-\title{ribiosPlot: Plotting Module of Ribios for Visualization}
+\title{ribiosPlot: Plotting Module of the 'ribios' Software Suite}
 \description{
-Provides data structures and functions for data transformation and visualization in computational biology. Includes heatmaps, color schemes, PCA plots, and various plotting utilities for drug discovery.
+Provides data structures and functions for data transformation and visualization in computational biology in drug discovery. Includes heatmaps, color schemes, PCA plots, and various plotting utilities.
 }
 \seealso{
 Useful links:
@@ -18,11 +18,6 @@ Useful links:
 }
 \author{
 \strong{Maintainer}: Jitao David Zhang \email{jitao_david.zhang@roche.com} (\href{https://orcid.org/0000-0002-3085-0909}{ORCID}) [contributor]
-
-Other contributors:
-\itemize{
-  \item F.Hoffmann-La Roche AG [copyright holder]
-}
 
 }
 \keyword{internal}
