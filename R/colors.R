@@ -8,7 +8,7 @@
 #' 
 #' The values for \sQuote{low, mid, high} can be given as color names
 #' (\sQuote{red}), plot color index (\code{2}=red), and HTML-style RGB,
-#' (\dQuote{\#FF0000}=red).
+#' (\dQuote{#FF0000}=red).
 #' 
 #' If \sQuote{mid} is supplied, then the returned color panel will consist of
 #' \sQuote{n - floor(n/2)} HTML-style RGB elements which vary smoothly between
@@ -136,14 +136,13 @@ brewer.pal.factorLevels <- function(factor, name="Greys") {
 #' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
 #' @examples
 #' 
-#' \dontrun{
+#' \donttest{
 #' myFac <- factor(c("HSV", "BVB", "FCB", "HSV", "BVB", "HSV"))
 #' brewer.pal.factor(myFac, name="Set1")
-#' brewer.pal.factorLevels(myFac, name="Set1")
-#' 
+#'
 #' myLongFac <- factor(paste("Sample", 1:20))
 #' brewer.pal.factor(myLongFac, name="Set1")
-#' 
+#'
 #' myShortFac <- factor(paste("Sample", 1:2))
 #' brewer.pal.factor(myShortFac, name="Set1")
 #' }
@@ -387,13 +386,13 @@ display.threecolor.panels <- function (nc=20) {
 #' 
 #' midCol("black", "red")
 #' midCol(c("black", "red"))
-#' \dontrun{
+#' \donttest{
 #' set.seed(1778)
 #' nCol <- 20
 #' candCol <- grep("gr[a|e]y", colors(), value=TRUE, invert=TRUE)
 #' firstCols <- sample(candCol, nCol)
 #' secondCols <- rev(sample(candCol, nCol))
-#' midCols <- sapply(seq(along=firstCols), function(i) 
+#' midCols <- sapply(seq(along=firstCols), function(i)
 #'   midCol(firstCols[i], secondCols[i]))
 #' plot.new()
 #' plot.window(xaxt="n", yaxt="n", xlim=c(0, nCol),
@@ -401,7 +400,7 @@ display.threecolor.panels <- function (nc=20) {
 #' title("Example of midCol")
 #' segments(x0=1:nCol, y0=0, x1=1:nCol, y1=4, col="lightgray")
 #' points(x=rep(1:nCol, each=3),
-#'      y=rep(1:3, nCol), 
+#'      y=rep(1:3, nCol),
 #'      pch=21, cex=1.75,
 #'      bg=as.vector(rbind(firstCols, midCols, secondCols)))
 #' text(0, c(1.5, 2.5, 3.5), c("Second", "Midpoint", "First"),

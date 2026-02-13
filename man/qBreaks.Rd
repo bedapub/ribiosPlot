@@ -23,11 +23,8 @@ axis. This is usally larger than the original number of breaks .
 }
 \examples{
 
-\dontrun{
 testVal <- rnorm(1000)
-qBreaks(testVal, quantiles=c(0.25, 0.75), breaks=100) ## should be about
-400
-}
+qBreaks(testVal, quantiles=c(0.25, 0.75), breaks=100)
 
 }
 \seealso{

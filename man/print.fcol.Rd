@@ -11,6 +11,9 @@
 
 \item{...}{Not used now}
 }
+\value{
+The input \code{x}, invisibly.
+}
 \description{
 Print a fcol object
 }

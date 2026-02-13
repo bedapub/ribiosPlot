@@ -1,9 +1,8 @@
 #' @importFrom grDevices blues9 col2rgb colorRampPalette
 #' @importFrom grDevices dev.print gray palette pdf rgb xy.coords
-#' @importFrom utils assignInNamespace
 #' @importFrom ribiosUtils assertFile basefilename haltifnot
 #' @importFrom RColorBrewer brewer.pal brewer.pal.info 
-#' @importFrom grid grid.layout grid.text plotViewport pushViewport unit viewport gpar
+#' @importFrom grid grid.newpage grid.text unit gpar
 #' @importFrom lattice panel.xyplot
 #' @import ggplot2
 #' @import graphics
@@ -24,6 +23,8 @@ NULL
 #'   compactPar()
 #'   plot(1:4)
 #' 
+#' @return A named list of the previous \code{par} settings (invisibly),
+#'   as returned by \code{\link{par}}.
 #' @export compactPar
 compactPar<- function(mar=c(3,3,1.5,1.5), mgp=c(2,1,0),...) return(par(mar=mar, mgp=mgp, ...))
 
@@ -36,7 +37,7 @@ compactPar<- function(mar=c(3,3,1.5,1.5), mgp=c(2,1,0),...) return(par(mar=mar, 
 #' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
 #' @examples
 #' 
-#'   \dontrun{
+#'   \donttest{
 #'     op <- par(mfrow=squareLayout(7))
 #'     plot(1:5)
 #'     plot(2:6)

@@ -37,6 +37,10 @@ panel.lmSmooth(
 
 This function can be used with \code{pairs} to display correlations.}
 }
+\value{
+No return value, called for side effects as a panel function
+  in \code{\link[graphics]{pairs}}.
+}
 \description{
 Correlation panel
 }

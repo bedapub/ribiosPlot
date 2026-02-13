@@ -25,7 +25,7 @@ See NOTES below)
 \details{
 The values for \sQuote{low, mid, high} can be given as color names
 (\sQuote{red}), plot color index (\code{2}=red), and HTML-style RGB,
-(\dQuote{\#FF0000}=red).
+(\dQuote{#FF0000}=red).
 
 If \sQuote{mid} is supplied, then the returned color panel will consist of
 \sQuote{n - floor(n/2)} HTML-style RGB elements which vary smoothly between

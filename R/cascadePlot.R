@@ -120,6 +120,7 @@ nonNegCascadeOrder <- function(matrix) {
 #'             zlim=c(-4,4), col="royalbluered",
 #'             main="Cascade order")
 #' 
+#' @return An integer vector of row indices in cascade order.
 #' @export cascadeOrder
 cascadeOrder <- function(matrix, dichotomy=c('maxabs', 'mean', 'median')) {
     dichotomy <- match.arg(dichotomy)

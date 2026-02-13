@@ -16,25 +16,29 @@ plotVenn(
 
 \item{main}{Figure title}
 
-\item{show}{default options}
+\item{show}{Named list controlling which elements to display.
+Supported elements: \code{Universe} (logical), \code{Sets} (logical),
+\code{SetLabels} (logical), \code{DarkMatter} (logical),
+\code{Faces} (logical), \code{FaceText} (character, e.g. \code{"weight"}).}
 
-\item{...}{other parameters passed to plotVenn}
+\item{...}{Other parameters passed to \code{Vennerable::compute.Venn}}
 }
 \value{
-Side effect is used - a plot is generated
+Side effect is used - a plot is generated.
 }
 \description{
-The function plots Venn object of the Vennerable package in a way that
-better suits my eyes
+The function plots Venn objects from the Vennerable package with
+custom margins that better suit publication figures.
 }
 \note{
-The function is applicable to Vennerable package version 3.0.
+The function requires Vennerable package version 3.0 or later.
+  Plotting logic adapted from Vennerable (GPL license).
 }
 \examples{
 
-if(require("Vennerable")) {
- myVenn <- list(A=LETTERS[1:24], B=LETTERS[3:8], C=LETTERS[5:9])
- plotVenn(Venn(myVenn), main="Letters")
+if (requireNamespace("Vennerable", quietly = TRUE)) {
+  myVenn <- list(A = LETTERS[1:24], B = LETTERS[3:8], C = LETTERS[5:9])
+  plotVenn(Vennerable::Venn(myVenn), main = "Letters")
 }
 
 }

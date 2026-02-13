@@ -8,7 +8,9 @@
 #' @param ... Passed to \code{cor}.
 #'
 #' This function can be used with \code{pairs} to display correlations.
-#' @seealso \code{\link[graphics]{pairs}}. 
+#' @return No return value, called for side effects as a panel function
+#'   in \code{\link[graphics]{pairs}}.
+#' @seealso \code{\link[graphics]{pairs}}.
 #' @importFrom stats cor
 #' @export
 panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...) {
@@ -37,11 +39,13 @@ panel.cor <- function(x, y, digits = 2, prefix = "", cex.cor, ...) {
 #'
 #' This function can be used with \code{pairs} to display correlations.
 #'
-#' @seealso \code{\link[graphics]{pairs}}. 
+#' @return No return value, called for side effects as a panel function
+#'   in \code{\link[graphics]{pairs}}.
+#' @seealso \code{\link[graphics]{pairs}}.
 #' @importFrom stats cor lm
 #' @importFrom graphics panel.smooth legend abline
 #' @export
-panel.lmSmooth <- function(x,y, col = par("col"), bg = NA, pch = par("pch"), 
+panel.lmSmooth <- function(x,y, col = par("col"), bg = NA, pch = par("pch"),
                       cex = 0.8, method="spearman", use="complete", ...) {
 
   corr <- cor(x,y, method=method, use=use)

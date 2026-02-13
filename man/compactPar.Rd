@@ -13,6 +13,10 @@ compactPar(mar = c(3, 3, 1.5, 1.5), mgp = c(2, 1, 0), ...)
 
 \item{...}{other parameters passed to \code{par}}
 }
+\value{
+A named list of the previous \code{par} settings (invisibly),
+  as returned by \code{\link{par}}.
+}
 \description{
 For compact figures
 }

@@ -22,13 +22,13 @@ Blender two colors to get the midpoint color of two colors
 
 midCol("black", "red")
 midCol(c("black", "red"))
-\dontrun{
+\donttest{
 set.seed(1778)
 nCol <- 20
 candCol <- grep("gr[a|e]y", colors(), value=TRUE, invert=TRUE)
 firstCols <- sample(candCol, nCol)
 secondCols <- rev(sample(candCol, nCol))
-midCols <- sapply(seq(along=firstCols), function(i) 
+midCols <- sapply(seq(along=firstCols), function(i)
   midCol(firstCols[i], secondCols[i]))
 plot.new()
 plot.window(xaxt="n", yaxt="n", xlim=c(0, nCol),
@@ -36,7 +36,7 @@ plot.window(xaxt="n", yaxt="n", xlim=c(0, nCol),
 title("Example of midCol")
 segments(x0=1:nCol, y0=0, x1=1:nCol, y1=4, col="lightgray")
 points(x=rep(1:nCol, each=3),
-     y=rep(1:3, nCol), 
+     y=rep(1:3, nCol),
      pch=21, cex=1.75,
      bg=as.vector(rbind(firstCols, midCols, secondCols)))
 text(0, c(1.5, 2.5, 3.5), c("Second", "Midpoint", "First"),

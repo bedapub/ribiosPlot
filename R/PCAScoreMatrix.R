@@ -95,7 +95,7 @@ as.data.frame.PCAScoreMatrix <- function(x,
 #' 
 #' @param x A \code{PCAScoreMatrix} S3-object
 #' @param ... Ignored
-#' @return NULL, side effect is used
+#' @return The input \code{x}, invisibly.
 #' @examples
 #' 
 #' myPCmat <- PCAScoreMatrix(matrix(rnorm(15),ncol=3), c(0.25, 0.15, 0.1))
@@ -112,5 +112,6 @@ print.PCAScoreMatrix <- function(x, ...) {
   cat("Options\n")
   cat("-- Use 'as.matrix' to turn this object into a simple matrix\n")
   cat("-- Use 'expVar' to extract explained variances\n")
-  cat("-- Use 'expVarLabel' to generate labels of explained variances")
+  cat("-- Use 'expVarLabel' to generate labels of explained variances\n")
+  invisible(x)
 }

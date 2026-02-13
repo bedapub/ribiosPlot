@@ -15,6 +15,10 @@ getExpVarLabel(ev, choices, compact = FALSE)
 \item{compact}{Logical, either a \code{compact} label is returned, see
 examples.}
 }
+\value{
+A character vector of labels in the form
+  \code{"Principal component N (X\% variance explained)"}.
+}
 \description{
 Helper function to print PC and explained variances
 }

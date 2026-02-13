@@ -29,6 +29,7 @@ fcbase <- function(fcol) {
 #' Print a fcol object
 #' @param x A fcol object, likely constructed by \code{\link{fcol}}
 #' @param ... Not used now
+#' @return The input \code{x}, invisibly.
 #' @examples
 #' fc <- fcol(c("lightblue", "orange", "lightblue"), base=c("orange", "lightblue"))
 #' fc
@@ -41,6 +42,7 @@ print.fcol <- function(x, ...) {
       "Colors: (", length(acol), "):", ribiosUtils::chosenFew(acol),"\n",
       "Base colors (", length(bcol), "):", ribiosUtils::chosenFew(fcbase(x)), "\n",
       sep="")
+  invisible(x)
 }
 
 #' Replace base colors of a fcol object with a different value

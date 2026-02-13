@@ -1,6 +1,6 @@
 Package: ribiosPlot
 Type: Package
-Title: Plotting Module of Ribios for Visualization
+Title: Plotting Module of the 'ribios' Software Suite
 Version: 1.3.0
 Date: 2026-01-24
 Authors@R:
@@ -8,11 +8,8 @@ Authors@R:
            family = "Zhang",
            role = c("aut", "cre", "ctb"),
            email = "jitao_david.zhang@roche.com",
-           comment = c(ORCID="0000-0002-3085-0909")),
-    person("F.Hoffmann-La Roche AG", role="cph"))
-Description: Provides data structures and functions for data transformation
-    and visualization in computational biology. Includes heatmaps, color
-    schemes, PCA plots, and various plotting utilities for drug discovery.
+           comment = c(ORCID="0000-0002-3085-0909")))
+Description: Provides data structures and functions for data transformation and visualization in computational biology in drug discovery. Includes heatmaps, color schemes, PCA plots, and various plotting utilities.
 Depends:
     R (>= 3.4.0)
 Imports:
@@ -21,7 +18,6 @@ Imports:
     RColorBrewer,
     grid,
     gridExtra,
-    utils,
     graphics,
     ribiosUtils,
     stats,
@@ -67,3 +63,4 @@ LazyLoad: yes
 Encoding: UTF-8
 RoxygenNote: 7.3.3
 VignetteBuilder: knitr
+Additional_repositories: https://bedapub.r-universe.dev

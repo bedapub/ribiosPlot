@@ -26,6 +26,10 @@ histMat(
 
 \item{\dots}{Other parameters passed to \code{hist}}
 }
+\value{
+Invisibly, a list as returned by \code{\link{hist}}, with
+  additional elements \code{xlim} and \code{linesOpt}.
+}
 \description{
 Make histograms for matrix
 }

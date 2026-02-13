@@ -62,6 +62,8 @@ expVar.PCAScoreMatrix <- function(x, choices) {
 #' @param x \code{prcomp} or \code{PCAScoreMatrix} Object
 #' @param choices Integer indices of which PCs to be returned
 #' @param compact Logical, whether a compact format is returned, see example
+#' @return A character vector of labels describing the explained variance
+#'   of each principal component.
 #' @export expVarLabel
 expVarLabel <- function(x, choices, compact) UseMethod("expVarLabel")
 
@@ -75,6 +77,8 @@ expVarLabel <- function(x, choices, compact) UseMethod("expVarLabel")
 #' \code{NULL} or \code{NA} or missing, all elements are returned.
 #' @param compact Logical, either a \code{compact} label is returned, see
 #' examples.
+#' @return A character vector of labels in the form
+#'   \code{"Principal component N (X\% variance explained)"}.
 #' @export
 getExpVarLabel <- function(ev, choices, compact=FALSE) {
   if(missing(choices) || is.null(choices) || (length(choices)==1 && is.na(choices)))

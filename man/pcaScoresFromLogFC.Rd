@@ -22,6 +22,10 @@ default: 0}
 Perform PCA and get scores from a logFC matrix by setting a pseudo profile
 of no change (0 for all features) at the origin point}
 }
+\value{
+A \code{\link{PCAScoreMatrix}} object containing the PCA scores
+  derived from the log fold-change matrix.
+}
 \description{
 Perform principal component analysis and derive PCA scores from a logFC
 matrix

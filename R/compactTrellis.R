@@ -28,19 +28,23 @@ compactTrellis <- function() {
 }
 
 #' Set compact trellis as default
-#' 
-#' The function sets compact trellis options as default
-#' 
-#' 
-#' @return as \code{lattice.options}. The side-effect is used.
+#'
+#' The function sets compact trellis options as default.
+#' The previous \code{lattice.options} are saved and restored
+#' via \code{on.exit} when the calling function exits.
+#'
+#' @return Invisibly, the previous value of the \code{default.theme}
+#'   lattice option, so it can be restored manually if needed.
 #' @examples
-#' 
-#' \dontrun{
-#' setCompactTrellis()
+#'
+#' \donttest{
+#' old <- setCompactTrellis()
 #' }
-#' 
+#'
 #' @export setCompactTrellis
 setCompactTrellis <- function() {
-  lattice::lattice.options("default.theme"=compactTrellis())
+  old <- lattice::lattice.options("default.theme")
+  lattice::lattice.options("default.theme" = compactTrellis())
+  invisible(old)
 }
 

@@ -29,6 +29,9 @@ plotPCAloading(
 
 \item{...}{Passed to \code{\link{plot}}}
 }
+\value{
+No return value, called for side effects (plotting).
+}
 \description{
 Plot PCA loading
 }
