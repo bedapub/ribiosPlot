@@ -19,6 +19,9 @@ offset is set to zero.}
 \item{reverse}{Logical of the same length as \code{choices} or 1 (which will be repeated),
 indicating whether the sign of values in the indexed axis should be reversed}
 }
+\value{
+A \code{\link{PCAScoreMatrix}} object containing the PCA scores.
+}
 \description{
 Retrieve PCA scores from prcomp objects
 }

@@ -18,7 +18,7 @@ Plan a square/matrix layout of plots
 }
 \examples{
 
-  \dontrun{
+  \donttest{
     op <- par(mfrow=squareLayout(7))
     plot(1:5)
     plot(2:6)

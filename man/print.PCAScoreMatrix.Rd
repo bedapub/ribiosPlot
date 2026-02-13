@@ -12,7 +12,7 @@
 \item{...}{Ignored}
 }
 \value{
-NULL, side effect is used
+The input \code{x}, invisibly.
 }
 \description{
 Print PCAScoreMatrix

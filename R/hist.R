@@ -60,11 +60,8 @@ qHist <- function(x,quantiles=0.25, breaks=100,
 #' @seealso This function is directly used by \code{qHist}
 #' @examples
 #' 
-#' \dontrun{
 #' testVal <- rnorm(1000)
-#' qBreaks(testVal, quantiles=c(0.25, 0.75), breaks=100) ## should be about
-#' 400
-#' }
+#' qBreaks(testVal, quantiles=c(0.25, 0.75), breaks=100)
 #' 
 #' @export
 qBreaks <- function(x,quantiles=c(0,0.99), breaks=100) {
@@ -143,6 +140,8 @@ xclipHist <- function(x, xclip=c(0.01, 0.99), breaks=100,
 #' testMat <- matrix(rnorm(1000), nrow=100)
 #' histMat(testMat)
 #' 
+#' @return Invisibly, a list as returned by \code{\link{hist}}, with
+#'   additional elements \code{xlim} and \code{linesOpt}.
 #' @export histMat
 histMat <- function(mat,
                     linesOpt=list(lwd=NULL, col=NULL,lty=NULL, type=NULL, pch=NULL),

@@ -22,6 +22,7 @@
 #' testPCAscores.withReverse <- pcaScores(testPCA, reverse=c(TRUE, FALSE))
 #' colMeans(as.matrix(testPCAscores.withReverse)[c(1,3,5),])
 #' 
+#' @return A \code{\link{PCAScoreMatrix}} object containing the PCA scores.
 #' @export pcaScores
 pcaScores <- function(x, choices, offset, reverse=c(FALSE, FALSE)) {
   stopifnot(all(is.logical(reverse)) & length(reverse)<=2)
@@ -137,6 +138,7 @@ pcaRotation <- function(x, choices, offset, reverse=c(FALSE, FALSE)) {
 #' @param x A prcomp object
 #' @param choices Integer index, choices to plot
 #' @param ... Other parameters
+#' @return Depends on the method; see individual method documentation.
 #' @export plotPCA
 plotPCA <- function(x, choices, ...) UseMethod("plotPCA")
 
@@ -407,6 +409,7 @@ plotPCA.prcomp <- function(x,
 #' @param title Character string
 #' @param subtitle Character string
 #' @param ... Passed to \code{\link{plot}}
+#' @return No return value, called for side effects (plotting).
 #' @export
 plotPCAloading <- function(loadings, x=1L, y=2L, circle=FALSE, title="", subtitle="",...) {
   plot(loadings[,x],loadings[,y],
@@ -427,11 +430,14 @@ plotPCAloading <- function(loadings, x=1L, y=2L, circle=FALSE, title="", subtitl
 }
 
 plotPCAscores <- function(scores, class, legendX, legendY, title="",...) {
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
+
   colbase <- brewer.pal.factorLevels(class, name="Set1")
   cols <- colbase[class]
   symbol <- rep(c(15:18,1:4),5L)
   vsym <- symbol[as.numeric(as.factor(class))]
-  
+
   par(mfrow=c(1,2),oma=c(0,0,2,4))
   plot(scores$x[,1],scores$x[,2],
        pch=vsym,
@@ -442,7 +448,7 @@ plotPCAscores <- function(scores, class, legendX, legendY, title="",...) {
        main="Front View",...)
   abline(h=0,v=0,lty=2)
   grid()
-  
+
   par(mfrow=c(1,2),oma=c(0,4,2,0))
   plot(scores$x[,3],scores$x[,2],
        pch=vsym,
@@ -453,8 +459,8 @@ plotPCAscores <- function(scores, class, legendX, legendY, title="",...) {
        main="Side View",...)
   abline(h=0,v=0,lty=2)
   grid()
-  
-  par(xpd=NA)   # This allows the legend to be printed outside the plot region
+
+  par(xpd=NA)
   legend(legendX,legendY,
          levels(class),
          pch=symbol[levels(class)],
@@ -463,7 +469,6 @@ plotPCAscores <- function(scores, class, legendX, legendY, title="",...) {
          cex=1, pt.cex=2,
          title="")
   title(title,outer=TRUE)
-  par(xpd=F)
 }
 
 
@@ -486,6 +491,8 @@ plotPCAscores <- function(scores, class, legendX, legendY, title="",...) {
 #' lfcMat <- matrix(rnorm(9), nrow=3)
 #' pcaScoresFromLogFC(lfcMat)
 #' 
+#' @return A \code{\link{PCAScoreMatrix}} object containing the PCA scores
+#'   derived from the log fold-change matrix.
 #' @export
 pcaScoresFromLogFC <- function(lfcMat,
                                reference=0,

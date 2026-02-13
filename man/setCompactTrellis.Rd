@@ -7,15 +7,18 @@
 setCompactTrellis()
 }
 \value{
-as \code{lattice.options}. The side-effect is used.
+Invisibly, the previous value of the \code{default.theme}
+  lattice option, so it can be restored manually if needed.
 }
 \description{
-The function sets compact trellis options as default
+The function sets compact trellis options as default.
+The previous \code{lattice.options} are saved and restored
+via \code{on.exit} when the calling function exits.
 }
 \examples{
 
-\dontrun{
-setCompactTrellis()
+\donttest{
+old <- setCompactTrellis()
 }
 
 }

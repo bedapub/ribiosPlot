@@ -13,6 +13,9 @@ plotPCA(x, choices, ...)
 
 \item{...}{Other parameters}
 }
+\value{
+Depends on the method; see individual method documentation.
+}
 \description{
 S3 method plotPCA
 }

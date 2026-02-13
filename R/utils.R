@@ -23,6 +23,8 @@ NULL
 #'   compactPar()
 #'   plot(1:4)
 #' 
+#' @return A named list of the previous \code{par} settings (invisibly),
+#'   as returned by \code{\link{par}}.
 #' @export compactPar
 compactPar<- function(mar=c(3,3,1.5,1.5), mgp=c(2,1,0),...) return(par(mar=mar, mgp=mgp, ...))
 
@@ -35,7 +37,7 @@ compactPar<- function(mar=c(3,3,1.5,1.5), mgp=c(2,1,0),...) return(par(mar=mar, 
 #' @author Jitao David Zhang <jitao_david.zhang@@roche.com>
 #' @examples
 #' 
-#'   \dontrun{
+#'   \donttest{
 #'     op <- par(mfrow=squareLayout(7))
 #'     plot(1:5)
 #'     plot(2:6)

@@ -33,10 +33,9 @@ maximum colors. See example below.
 }
 \examples{
 
-\dontrun{
+\donttest{
 myFac <- factor(c("HSV", "BVB", "FCB", "HSV", "BVB", "HSV"))
 brewer.pal.factor(myFac, name="Set1")
-brewer.pal.factorLevels(myFac, name="Set1")
 
 myLongFac <- factor(paste("Sample", 1:20))
 brewer.pal.factor(myLongFac, name="Set1")

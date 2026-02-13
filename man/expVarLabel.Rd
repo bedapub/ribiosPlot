@@ -14,6 +14,10 @@ expVarLabel(x, choices, compact)
 
 \item{compact}{Logical, whether a compact format is returned, see example}
 }
+\value{
+A character vector of labels describing the explained variance
+  of each principal component.
+}
 \description{
 Generic function expVarLabel to generate a label of explained variance from
 prcomp and PCAScoreMatrix objects

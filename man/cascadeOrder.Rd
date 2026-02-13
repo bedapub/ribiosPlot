@@ -12,6 +12,9 @@ cascadeOrder(matrix, dichotomy = c("maxabs", "mean", "median"))
 \item{dichotomy}{How are the rows divided into two? By maximal abs value
 (default), mean value, or the median value of each row.}
 }
+\value{
+An integer vector of row indices in cascade order.
+}
 \description{
 The 'cascade order' is defined by three criteria (1) Rows are divided into
 two groups by the condition given by 'dichotomy'. (2) The positive and
