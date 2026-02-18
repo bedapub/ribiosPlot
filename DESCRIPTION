@@ -62,5 +62,4 @@ BugReports: https://github.com/bedapub/ribiosPlot/issues
 LazyLoad: yes
 Encoding: UTF-8
 RoxygenNote: 7.3.3
-VignetteBuilder: knitr
 Additional_repositories: https://bedapub.r-universe.dev
