@@ -48,8 +48,9 @@ dpi) PNG files.
   plot(1:5)
   dev.off()
 
+  pngfile <- file.path(tmpdir, "test.png")
   pdf2png(pdffile)
-  pdf2png(pdffile, outfile="test.png")
+  pdf2png(pdffile, outfile=pngfile)
 
   testfile <- system.file("/doc/intro.pdf", package="limma")
   if(file.exists(testfile)) {
