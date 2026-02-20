@@ -43,7 +43,11 @@ jobs:
 
       - name: Install system dependencies (macOS)
         if: runner.os == 'macOS'
-        run: brew install jpeg
+        run: |
+          brew install jpeg
+          mkdir -p ~/.R
+          echo "CPPFLAGS += -I$(brew --prefix jpeg)/include" >> ~/.R/Makevars
+          echo "LDFLAGS += -L$(brew --prefix jpeg)/lib" >> ~/.R/Makevars
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
