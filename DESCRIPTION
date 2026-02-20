@@ -2,7 +2,7 @@ Package: ribiosPlot
 Type: Package
 Title: Plotting Module of the 'ribios' Software Suite
 Version: 1.3.0
-Date: 2026-01-24
+Date: 2026-02-20
 Authors@R:
   c(person(given = "Jitao David",
            family = "Zhang",
