@@ -39,13 +39,21 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
           use-public-rspm: true
+          extra-repositories: https://bedapub.r-universe.dev
+
+      - name: Install system dependencies (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install jpeg
+          mkdir -p ~/.R
+          echo "CPPFLAGS += -I$(brew --prefix jpeg)/include" >> ~/.R/Makevars
+          echo "LDFLAGS += -L$(brew --prefix jpeg)/lib" >> ~/.R/Makevars
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: any::rcmdcheck, any::testthat, any::Vennerable, any::ribiosArg
           needs: check
-          # Skip ribiosArg (not yet on CRAN) and Vennerable (GitHub only)
-          dependencies: '"hard"'
+          dependencies: '"soft"'
 
       - uses: r-lib/actions/check-r-package@v2
         with:
