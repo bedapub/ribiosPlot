@@ -9,7 +9,7 @@ Authors@R:
            role = c("aut", "cre", "ctb"),
            email = "jitao_david.zhang@roche.com",
            comment = c(ORCID="0000-0002-3085-0909")))
-Description: Provides data structures and functions for data transformation and visualization in computational biology in drug discovery. Includes heatmaps, color schemes, PCA plots, and various plotting utilities.
+Description: Provides data structures and functions for data transformation and visualization in computational biology in drug discovery as part of the 'ribios' software suite. Zhang (2025) <https://github.com/bedapub/ribiosPlot>.
 Depends:
     R (>= 3.4.0)
 Imports:

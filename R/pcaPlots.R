@@ -217,7 +217,8 @@ plotPCA <- function(x, choices, ...) UseMethod("plotPCA")
 #' rop <- par(mfrow=c(1,2), pty="s")
 #' plotPCA(testPCA, choices=c(1,2), grid=TRUE, points=pointsList, text=textList)
 #' plotPCA(testPCA, choices=c(2,3), grid=TRUE, points=pointsList, text=textList)
-#' 
+#' par(rop)
+#'
 #' @export
 plotPCA.prcomp <- function(x,
                            choices=c(1,2),

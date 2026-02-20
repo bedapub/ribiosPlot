@@ -15,6 +15,9 @@ limits; if set to 1 the whole range is used.}
 \item{symm}{logical value; if set to \code{TRUE}, the range will be
 symmetric around zero}
 }
+\value{
+A numeric vector of length 2 giving the lower and upper axis limits.
+}
 \description{
 Get xlim/ylim ranges for plots from real values
 }

@@ -4,6 +4,7 @@
 #' @param x Numeric matrix
 #' @param na.rm Logical. Should missing values (including NaN) be omitted from
 #' the calculations?
+#' @return A numeric vector of length \code{nrow(x)} with the row-wise variances.
 #' @keywords internal
 #' @examples
 #' 

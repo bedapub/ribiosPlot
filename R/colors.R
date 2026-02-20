@@ -39,8 +39,8 @@
 #'   image(z=matrix(1:100, ncol=1), col=col, xaxt="n", yaxt="n")
 #' }
 #'  
-#' par(mfrow=c(3,3))
-#'  
+#' oldpar <- par(mfrow=c(3,3))
+#'
 #' # two colors only:
 #' showpanel(colorpanel(8,low="red",high="green"))
 #'  
@@ -57,7 +57,8 @@
 #' 
 #' showpanel(royalbluered(64))
 #' showpanel(royalredblue(64))
-#' 
+#' par(oldpar)
+#'
 #' @importFrom ribiosUtils isOdd
 #' @export colorpanel
 colorpanel <- function (n, low, mid, high) {

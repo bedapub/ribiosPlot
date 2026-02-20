@@ -12,6 +12,9 @@ rowVars(x, na.rm = TRUE)
 \item{na.rm}{Logical. Should missing values (including NaN) be omitted from
 the calculations?}
 }
+\value{
+A numeric vector of length \code{nrow(x)} with the row-wise variances.
+}
 \description{
 Variance of features in rows
 }
