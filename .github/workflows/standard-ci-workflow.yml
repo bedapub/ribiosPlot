@@ -42,8 +42,9 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: any::rcmdcheck, any::testthat, any::Vennerable, any::ribiosArg
           needs: check
+          dependencies: '"soft"'
 
       - uses: r-lib/actions/check-r-package@v2
         with:
