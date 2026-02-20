@@ -6,7 +6,7 @@
 \alias{ribiosPlot-package}
 \title{ribiosPlot: Plotting Module of the 'ribios' Software Suite}
 \description{
-Provides data structures and functions for data transformation and visualization in computational biology in drug discovery. Includes heatmaps, color schemes, Principal Component Analysis (PCA) plots, and various plotting utilities.
+Provides data structures and functions for data transformation and visualization in computational biology in drug discovery as part of the 'ribios' software suite. Zhang (2025) \url{https://github.com/bedapub/ribiosPlot}.
 }
 \seealso{
 Useful links:
